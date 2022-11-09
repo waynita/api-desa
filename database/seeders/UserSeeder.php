@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         $this->Users = collect([
             [
-                'first_name' => 'Root',
+                'name' => 'Root',
                 'family_id' => null,
                 'username' => 'root',
                 'position_id' => 1,
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'created_at' => Carbon::now()
             ],
             [
-                'first_name' => 'Admin',
+                'name' => 'Admin',
                 'family_id' => null,
                 'username' => 'admin',
                 'position_id' => 2,
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
                 'created_at' => Carbon::now()
             ],
             [
-                'first_name' => 'User Pertama',
+                'name' => 'User Pertama',
                 'family_id' => 1,
                 'username' => 'user1',
                 'position_id' => 4,
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
                 'created_at' => Carbon::now()
             ],
             [
-                'first_name' => 'User Kedua',
+                'name' => 'User Kedua',
                 'family_id' => 1,
                 'username' => 'user2',
                 'position_id' => 4,

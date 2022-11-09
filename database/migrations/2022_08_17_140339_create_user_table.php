@@ -17,8 +17,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('family_id')->index('idx_family_id')->nullable()->default(NULL);
-            $table->string('first_name');
-            $table->string('last_name')->nullable()->default(NULL);
+            $table->string('name');
             $table->string('username', 191)->unique()->nullable()->default(NULL);
             $table->string('email', 191)->unique();
             $table->string('password', 400);

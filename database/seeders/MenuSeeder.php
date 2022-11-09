@@ -22,7 +22,7 @@ class MenuSeeder extends Seeder
                 'slug' => 'dashboard',
                 'parent_id' => null,
                 'sorting' => 1,
-                'file' => 'Modul.Dashboard.Dashboard',
+                'file' => 'Modul.Dashboard',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -295,6 +295,5 @@ class MenuSeeder extends Seeder
 
         $New = $this->Menu->diffKeys($Exists->toArray())->values();
         DB::table('menu')->insert($New->all());
-
     }
 }

@@ -20,14 +20,13 @@ class UserBrowseController extends Controller
 
         $response['count'] = User::select('count(*) as allcount')
             ->leftjoin("population", "population.user_id", "users.id")
-            ->leftjoin("family", "users.family_id", "family.id")
-            ->whereBetween('users.created_at', [$date_from, $date_end]);
+            ->leftjoin("family", "users.family_id", "family.id");
+            
 
         $response['totalRecordswithFilter'] = User::leftjoin("population", "population.user_id", "users.id")
             ->leftjoin("family", "users.family_id", "family.id")
             ->where(function ($query) use ($searchValue) {
-                $query->where("users.first_name", "like", "%". $searchValue . "%")
-                    ->orWhere("users.last_name", "like", "%". $searchValue . "%")
+                $query->where("users.name", "like", "%". $searchValue . "%")
                     ->orWhere("users.gender", "like", "%". $searchValue . "%")
                     ->orWhere("users.birthdate", "like", "%". $searchValue . "%")
                     
@@ -45,12 +44,12 @@ class UserBrowseController extends Controller
                     
                     // family
                     ->orWhere("family.number_family", "like", "%". $searchValue . "%");
-            })->whereBetween('users.created_at', [$date_from, $date_end]);
+            });
                             
-        $response['records'] = User::select(
+        $response['records'] = User::orderBy($this->columnName,$this->columnSortOrder)->select(
             // user
-            'users.first_name as first_name',
-            'users.last_name as last_name',
+            'users.id as id',
+            'users.name as name',
             'users.gender as gender',
             'users.birthdate as birthdate',
             'users.created_at as created_at',
@@ -73,8 +72,7 @@ class UserBrowseController extends Controller
             )->leftjoin("population", "population.user_id", "users.id")
             ->leftjoin("family", "users.family_id", "family.id")
             ->where(function ($query) use ($searchValue) {
-                $query->where("users.first_name", "like", "%". $searchValue . "%")
-                    ->orWhere("users.last_name", "like", "%". $searchValue . "%")
+                $query->where("users.name", "like", "%". $searchValue . "%")
                     ->orWhere("users.gender", "like", "%". $searchValue . "%")
                     ->orWhere("users.birthdate", "like", "%". $searchValue . "%")
                     
@@ -92,12 +90,43 @@ class UserBrowseController extends Controller
 
                      // family
                      ->orWhere("family.number_family", "like", "%". $searchValue . "%");
-            })->whereBetween('users.created_at', [$date_from, $date_end]);  
+            });  
 
         $response['count'] = $response['count']->count();
         $response['totalRecordswithFilter'] = $response['totalRecordswithFilter']->count();
-        $response['records'] = $response['records']->skip($this->start)->take($this->rowperpage)->get()->toArray();
+        $response['records'] = $response['records']->skip($this->start)->take($this->rowperpage)->get();
+        $data_arr = array();
 
-        dd($response);
+        foreach($response['records'] as $record){
+            $id = $record->id;
+            $name = $record->name;
+            $nik = $record->nik;
+            $village = $record->village;
+            $religion = $record->religion;
+            $occupation = $record->occupation;
+            $number_family = $record->number_family;
+            $status = $record->status;
+            
+            $data_arr[] = array(
+                "id" => $id,
+                "name" => $name,
+                "nik" => $nik,
+                "village" => $village,
+                "religion" => $religion,
+                "occupation" => $occupation,
+                "number_family" => $number_family,
+                "status" => $status
+            );
+        }
+
+        $response = array(
+            "draw" => intval($this->draw),
+            "iTotalRecords" => $response['count'],
+            "iTotalDisplayRecords" => $response['totalRecordswithFilter'],
+            "aaData" => $data_arr
+        );
+
+        echo json_encode($response);
+        exit; 
     }
 }

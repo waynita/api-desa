@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Born\BornBrowseController;
 use App\Http\Controllers\Comer\ComerBrowseController;
 use App\Http\Controllers\Dead\DeadBrowseController;
@@ -7,8 +8,6 @@ use App\Http\Controllers\Family\FamilyBrowseController;
 use App\Http\Controllers\Move\MoveBrowseController;
 use App\Http\Controllers\Position\PositionBrowseController;
 use App\Http\Controllers\User\UserBrowseController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +23,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 
 Route::post("get_born", [BornBrowseController::class,"Anything"]);
 Route::post("get_comer", [ComerBrowseController::class,"Anything"]);

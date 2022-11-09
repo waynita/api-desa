@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('positions', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->string('name');
-            $table->smallInteger('parent_id')->nullable()->default(NULL);
-            $table->smallInteger('division_id')->nullable()->default(NULL);
+        Schema::create('submenu', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 191);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('submenu');
     }
 };

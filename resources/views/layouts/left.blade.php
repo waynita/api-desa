@@ -39,28 +39,24 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">JPM Customer</span>
+      <span class="brand-text font-weight-light">Selang Nangka</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{asset('dist/img/cat.jpeg')}}" class="img-circle elevation-2" alt="User Image">
-        </div>
         <div class="info">
           <a href="{{URL('/')}}" class="d-block"> Tampilkan kode </a>
         </div>
       </div>
-    
-     
+      
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"> 
           @foreach($Data as $Values)
-          <li class="nav-item">
-            <a href="{{ $Values['url'] }}" class="nav-link">
+          <li class="nav-item {{$Values['slug']}}">
+            <a href="{{ $Values['url'] }}" class="nav-link {{$Values['slug']}}">
               <i class="nav-icon {{ $Values['icon'] }}"></i>
               <p>
               {{ $Values['name'] }}
@@ -73,10 +69,10 @@
             @foreach($Values['child'] as $Child)
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ $Child['url'] }}" class="nav-link">
-                <i class="{{ $Child['icon'] }} nav-icon"></i>
-                <p>{{ $Child['name'] }}</p>
-                  </a>
+                <a href="{{ $Child['url'] }}" class="nav-link {{$Child['slug']}}">
+                  <i class="{{ $Child['icon'] }} nav-icon"></i>
+                  <p>{{ $Child['name'] }}</p>
+                </a>
               </li>
             </ul>
             @endforeach
@@ -86,3 +82,13 @@
       </nav>
     </div>
   </aside>
+
+  <script>
+    $("document").ready(function(){
+      var parent = "{{$Parent->slug}}";
+      $( "."+parent).addClass( "menu-is-opening menu-open active" );
+
+      var modul = "{{$Pages['FilterMenu']->slug}}";
+      $( "."+modul).addClass( "active" );
+    });
+  </script>

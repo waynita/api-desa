@@ -18,11 +18,10 @@ class FamilyBrowseController extends Controller
         $date_from = Carbon::parse($request->get('date_from'))->startOfDay();
         $date_end = Carbon::parse($request->get('date_end'))->endOfDay();
 
-        $response['count'] = Family::select('count(*) as allcount')->whereBetween('family.created_at', [$date_from, $date_end]);
+        $response['count'] = Family::select('count(*) as allcount');
 
         $response['totalRecordswithFilter'] = Family::where(function ($query) use ($searchValue) {
                 $query->where("family.number_family", "like", "%". $searchValue . "%")
-                    ->orWhere("family.number_family", "like", "%". $searchValue . "%")
                     ->orWhere("family.head", "like", "%". $searchValue . "%")
                     ->orWhere("family.village", "like", "%". $searchValue . "%")
                     ->orWhere("family.neighbourhood", "like", "%". $searchValue . "%")
@@ -30,11 +29,10 @@ class FamilyBrowseController extends Controller
                     ->orWhere("family.sub_districts", "like", "%". $searchValue . "%")
                     ->orWhere("family.districts", "like", "%". $searchValue . "%")
                     ->orWhere("family.province", "like", "%". $searchValue . "%");
-            })->whereBetween('family.created_at', [$date_from, $date_end]);
+            });
                             
         $response['records'] = Family::where(function ($query) use ($searchValue) {
             $query->where("family.number_family", "like", "%". $searchValue . "%")
-                ->orWhere("family.number_family", "like", "%". $searchValue . "%")
                 ->orWhere("family.head", "like", "%". $searchValue . "%")
                 ->orWhere("family.village", "like", "%". $searchValue . "%")
                 ->orWhere("family.neighbourhood", "like", "%". $searchValue . "%")
@@ -42,12 +40,41 @@ class FamilyBrowseController extends Controller
                 ->orWhere("family.sub_districts", "like", "%". $searchValue . "%")
                 ->orWhere("family.districts", "like", "%". $searchValue . "%")
                 ->orWhere("family.province", "like", "%". $searchValue . "%");
-            })->whereBetween('family.created_at', [$date_from, $date_end]);  
+            });  
 
         $response['count'] = $response['count']->count();
         $response['totalRecordswithFilter'] = $response['totalRecordswithFilter']->count();
-        $response['records'] = $response['records']->skip($this->start)->take($this->rowperpage)->get()->toArray();
+        $response['records'] = $response['records']->skip($this->start)->take($this->rowperpage)->get();
+        $data_arr = array();
 
-        dd($response);
+        foreach($response['records'] as $record){
+            $id = $record->id;
+            $number_family = $record->number_family;
+            $head = $record->head;
+            $village = $record->village;
+            $sub_districts = $record->sub_districts;
+            $districts = $record->districts;
+            $province = $record->province;
+            
+            $data_arr[] = array(
+                "id" => $id,
+                "number_family" => $number_family,
+                "head" => $head,
+                "village" => $village,
+                "sub_districts" => $sub_districts,
+                "districts" => $districts,
+                "province" => $province,
+            );
+        }
+
+        $response = array(
+            "draw" => intval($this->draw),
+            "iTotalRecords" => $response['count'],
+            "iTotalDisplayRecords" => $response['totalRecordswithFilter'],
+            "aaData" => $data_arr
+        );
+
+        echo json_encode($response);
+        exit; 
     }
 }

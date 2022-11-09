@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PopulationSeeder::class);
         $this->call(FamilySeeder::class);
         $this->call(MenuSeeder::class);
-
+        $this->call(SubMenuSeeder::class);
     }
 }
