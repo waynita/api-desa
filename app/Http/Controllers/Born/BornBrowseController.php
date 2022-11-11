@@ -38,7 +38,6 @@ class BornBrowseController extends Controller
 
             // Family
             'family.number_family as number_family',
-            'family.head as head',
 
             // Born
             'born.created_at as created_at',
