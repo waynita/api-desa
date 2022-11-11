@@ -9,6 +9,7 @@ use App\Http\Controllers\Family\FamilyBrowseController;
 use App\Http\Controllers\Move\MoveBrowseController;
 use App\Http\Controllers\Position\PositionBrowseController;
 use App\Http\Controllers\User\UserBrowseController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +23,15 @@ use App\Http\Controllers\User\UserBrowseController;
 */
 
 
-Route::post("get_born", [BornBrowseController::class,"Anything"]);
-Route::post("get_comer", [ComerBrowseController::class,"Anything"]);
-Route::post("get_dead", [DeadBrowseController::class,"Anything"]);
+Route::post("get_born", [BornBrowseController::class,"Anything"])->name('GetBorn');
+Route::post("get_comer", [ComerBrowseController::class,"Anything"])->name('GetComer');
+Route::post("get_dead", [DeadBrowseController::class,"Anything"])->name('GetDead');
 Route::post("get_family", [FamilyBrowseController::class,"Anything"])->name('GetFamily');
-Route::post("get_move", [MoveBrowseController::class,"Anything"]);
+Route::post("get_move", [MoveBrowseController::class,"Anything"])->name('GetMove');
 Route::post("get_position", [PositionBrowseController::class,"Anything"]);
 Route::post("get_user", [UserBrowseController::class,"Anything"])->name('GetUser');
+
+Route::post("user/insert", [UserController::class,"Insert"])->name('UserInsert');
 
 Route::get("/", [LinkController::class,"Anything"])->middleware('link');
 Route::get("/{query}", [LinkController::class,"Anything"])->where('query', '.+')->middleware('link');

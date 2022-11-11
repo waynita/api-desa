@@ -26,6 +26,7 @@ return new class extends Migration
             $table->date('birthdate')->nullable()->default(null);
             $table->integer('position_id')->default(1);
             $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->tinyInteger('show')->default(1);
             $table->rememberToken();
             $table->string('forgot_token', 500)->nullable()->default(null);
             $table->timestamp('forgot_token_expired_at')->nullable()->default(null);

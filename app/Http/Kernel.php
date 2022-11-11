@@ -3,6 +3,16 @@
 namespace App\Http;
 
 use App\Http\Middleware\LinkMiddleware;
+// User
+use App\Http\Middleware\User\Delete as UserDelete;
+use App\Http\Middleware\User\Insert as UserInsert;
+use App\Http\Middleware\User\Update as UserUpdate;
+
+// Family
+use App\Http\Middleware\Family\Insert as FamilyInsert;
+use App\Http\Middleware\Family\Update as FamilyUpdate;
+use App\Http\Middleware\Family\Delete as FamilyDelete;
+
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,5 +75,14 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'link' => LinkMiddleware::class,
+        'UserInsert' => UserInsert::class,
+        'UserUpdate' => UserUpdate::class,
+        'UserDelete' => UserDelete::class,
+
+        // family
+        'FamilyInsert' => FamilyInsert::class,
+        'FamilyUpdate' => FamilyUpdate::class,
+        'FamilyDelete' => FamilyDelete::class,
+
     ];
 }

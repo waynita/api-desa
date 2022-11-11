@@ -19,11 +19,11 @@ class UserBrowseController extends Controller
         $date_end = Carbon::parse($request->get('date_end'))->endOfDay();
 
         $response['count'] = User::select('count(*) as allcount')
-            ->leftjoin("population", "population.user_id", "users.id")
+            ->join("population", "population.user_id", "users.id")
             ->leftjoin("family", "users.family_id", "family.id");
             
 
-        $response['totalRecordswithFilter'] = User::leftjoin("population", "population.user_id", "users.id")
+        $response['totalRecordswithFilter'] = User::join("population", "population.user_id", "users.id")
             ->leftjoin("family", "users.family_id", "family.id")
             ->where(function ($query) use ($searchValue) {
                 $query->where("users.name", "like", "%". $searchValue . "%")
@@ -69,7 +69,7 @@ class UserBrowseController extends Controller
 
             // Population
             "family.number_family as number_family",
-            )->leftjoin("population", "population.user_id", "users.id")
+            )->join("population", "population.user_id", "users.id")
             ->leftjoin("family", "users.family_id", "family.id")
             ->where(function ($query) use ($searchValue) {
                 $query->where("users.name", "like", "%". $searchValue . "%")

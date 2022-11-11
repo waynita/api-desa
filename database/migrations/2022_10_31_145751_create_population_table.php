@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('population', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('nik', 20);
-            $table->string('name', 150);
+            $table->string('nik', 20)->unique();
             $table->string('place_of_birth', 150)->nullable();
             $table->enum('gender', ['l', 'p'])->default('l');
             $table->string('village', 191);
@@ -25,6 +24,7 @@ return new class extends Migration
             $table->integer('hamlet');
             $table->string('religion', 191)->nullable();
             $table->string('married', 191)->nullable();
+            $table->string('relation', 191)->nullable();
             $table->string('occupation', 191)->nullable();
             $table->enum('status', ['ada', 'meninggal', 'pindah'])->default('ada');
             $table->timestamps();

@@ -35,8 +35,12 @@ class BornBrowseController extends Controller
             'born.name as name',
             'born.gender as gender',
             'born.date_of_birth as date_of_birth',
+
+            // Family
             'family.number_family as number_family',
             'family.head as head',
+
+            // Born
             'born.created_at as created_at',
             'born.updated_at as updated_at'
             )->join("family", "born.family_id", "family.id")->where(function ($query) use ($searchValue) {
@@ -48,8 +52,35 @@ class BornBrowseController extends Controller
 
         $response['count'] = $response['count']->count();
         $response['totalRecordswithFilter'] = $response['totalRecordswithFilter']->count();
-        $response['records'] = $response['records']->skip($this->start)->take($this->rowperpage)->get()->toArray();
+        $response['records'] = $response['records']->skip($this->start)->take($this->rowperpage)->get();
+        $data_arr = array();
 
-        dd($response);
+        foreach($response['records'] as $record){
+            $id = $record->id;
+            $name = $record->name;
+            $date_of_birth = $record->date_of_birth;
+            $gender = $record->gender;
+            $family = $record->number_family . " - " . $record->head;
+            $action = "test";
+            
+            $data_arr[] = array(
+                "id" => $id,
+                "name" => $name,
+                "date_of_birth" => $date_of_birth,
+                "gender" => $gender,
+                "family" => $family,
+                "action" => $action
+            );
+        }
+
+        $response = array(
+            "draw" => intval($this->draw),
+            "iTotalRecords" => $response['count'],
+            "iTotalDisplayRecords" => $response['totalRecordswithFilter'],
+            "aaData" => $data_arr
+        );
+
+        echo json_encode($response);
+        exit; 
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('family', function (Blueprint $table) {
             $table->id();
             $table->string('number_family', 20);
-            $table->string('head', 191)->nullable();
+            $table->integer('head_id')->index('head_id', 'idx_head_id');
             $table->string('village', 191);
             $table->integer('neighbourhood');
             $table->integer('hamlet');

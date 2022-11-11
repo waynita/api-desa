@@ -28,9 +28,7 @@ class ComerBrowseController extends Controller
                     ->orWhere("comer.gender", "like", "%". $searchValue . "%")
                    
                     //User
-                    ->orWhere("users.first_name", "like", "%". $searchValue . "%")
-                    ->orWhere("users.last_name", "like", "%". $searchValue . "%")
-                    ->orWhere("users.gender", "like", "%". $searchValue . "%")
+                    ->orWhere("users.name", "like", "%". $searchValue . "%")
                     ->orWhere("users.birthdate", "like", "%". $searchValue . "%");
             })->whereBetween('comer.created_at', [$date_from, $date_end]);
                             
@@ -42,9 +40,7 @@ class ComerBrowseController extends Controller
             'comer.date_of_come as date_of_come',
             'comer.whistleblower_id as whistleblower_id',
             // user
-            'users.first_name as first_name',
-            'users.last_name as last_name',
-            'users.gender as gender',
+            'users.name as pelapor',
             'users.birthdate as birthdate',
 
             'comer.created_at as created_at',
@@ -55,16 +51,42 @@ class ComerBrowseController extends Controller
                     ->orWhere("comer.gender", "like", "%". $searchValue . "%")
                 
                     //User
-                    ->orWhere("users.first_name", "like", "%". $searchValue . "%")
-                    ->orWhere("users.last_name", "like", "%". $searchValue . "%")
-                    ->orWhere("users.gender", "like", "%". $searchValue . "%")
+                    ->orWhere("users.name", "like", "%". $searchValue . "%")
                     ->orWhere("users.birthdate", "like", "%". $searchValue . "%");
             })->whereBetween('comer.created_at', [$date_from, $date_end]);  
 
         $response['count'] = $response['count']->count();
         $response['totalRecordswithFilter'] = $response['totalRecordswithFilter']->count();
-        $response['records'] = $response['records']->skip($this->start)->take($this->rowperpage)->get()->toArray();
+        $response['records'] = $response['records']->skip($this->start)->take($this->rowperpage)->get();
+        $data_arr = array();
 
-        dd($response);
+        foreach($response['records'] as $record){
+            $id = $record->id;
+            $nik = $record->nik;
+            $name = $record->name;
+            $gender = $record->gender;
+            $date_of_come = $record->date_of_come;
+            $pelapor = $record->pelapor;
+            $action = "test";
+            
+            $data_arr[] = array(
+                "id" => $id,
+                "nik" => $nik,
+                "name" => $name,
+                "gender" => $gender,
+                "date_of_come" => $date_of_come,
+                "pelapor" => $pelapor,
+                "action" => $action
+            );
+        }
+
+        $response = array(
+            "draw" => intval($this->draw),
+            "iTotalRecords" => $response['count'],
+            "iTotalDisplayRecords" => $response['totalRecordswithFilter'],
+            "aaData" => $data_arr
+        );
+
+        echo json_encode($response);
     }
 }

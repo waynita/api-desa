@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('move', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->index('user_id', 'idx_user_id');
+            $table->text('reason');
             $table->timestamp('date_of_move');
             $table->timestamps();
         });

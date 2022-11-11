@@ -19,19 +19,20 @@ class DeadBrowseController extends Controller
         $date_end = Carbon::parse($request->get('date_end'))->endOfDay();
 
         $response['count'] = Dead::select('count(*) as allcount')
-            ->join("users", "dead.user_id", "users.id")->whereBetween('dead.created_at', [$date_from, $date_end]);
+            ->join("users", "dead.user_id", "users.id")
+            ->leftJoin('population', 'population.user_id', 'users.id');
 
         $response['totalRecordswithFilter'] = Dead::join("users", "dead.user_id", "users.id")
+            ->leftJoin('population', 'population.user_id', 'users.id')
             ->where(function ($query) use ($searchValue) {
                 $query->where("dead.cause_of_death", "like", "%". $searchValue . "%")
                     ->orWhere("dead.date_of_death", "like", "%". $searchValue . "%")
                    
                     //User
-                    ->orWhere("users.first_name", "like", "%". $searchValue . "%")
-                    ->orWhere("users.last_name", "like", "%". $searchValue . "%")
+                    ->orWhere("users.name", "like", "%". $searchValue . "%")
                     ->orWhere("users.gender", "like", "%". $searchValue . "%")
                     ->orWhere("users.birthdate", "like", "%". $searchValue . "%");
-            })->whereBetween('dead.created_at', [$date_from, $date_end]);
+            });
                             
         $response['records'] = Dead::select(
             'dead.id as id',
@@ -39,28 +40,57 @@ class DeadBrowseController extends Controller
             'dead.date_of_death as date_of_death',
             
             // user
-            'users.first_name as first_name',
-            'users.last_name as last_name',
+            'users.name as name',
             'users.gender as gender',
             'users.birthdate as birthdate',
 
+            // Population
+            'population.nik as nik',
+
             'dead.created_at as created_at',
             'dead.updated_at as updated_at'
-            )->join("users", "dead.user_id", "users.id")->where(function ($query) use ($searchValue) {
+            )->join("users", "dead.user_id", "users.id")
+            ->leftJoin('population', 'population.user_id', 'users.id')
+            ->where(function ($query) use ($searchValue) {
                 $query->where("dead.cause_of_death", "like", "%". $searchValue . "%")
                     ->orWhere("dead.date_of_death", "like", "%". $searchValue . "%")
                 
                     //User
-                    ->orWhere("users.first_name", "like", "%". $searchValue . "%")
-                    ->orWhere("users.last_name", "like", "%". $searchValue . "%")
+                    ->orWhere("users.name", "like", "%". $searchValue . "%")
                     ->orWhere("users.gender", "like", "%". $searchValue . "%")
                     ->orWhere("users.birthdate", "like", "%". $searchValue . "%");
-            })->whereBetween('dead.created_at', [$date_from, $date_end]);  
+            });  
 
         $response['count'] = $response['count']->count();
         $response['totalRecordswithFilter'] = $response['totalRecordswithFilter']->count();
-        $response['records'] = $response['records']->skip($this->start)->take($this->rowperpage)->get()->toArray();
+        $response['records'] = $response['records']->skip($this->start)->take($this->rowperpage)->get();
+        $data_arr = array();
 
-        dd($response);
+        foreach($response['records'] as $record){
+            $id = $record->id;
+            $nik = $record->nik;
+            $name = $record->name;
+            $date_of_dead = $record->date_of_death;
+            $cause_of_dead = $record->cause_of_death;
+            $action = "test";
+            
+            $data_arr[] = array(
+                "id" => $id,
+                "nik" => $nik,
+                "name" => $name,
+                "date_of_dead" => $date_of_dead,
+                "cause_of_dead" => $cause_of_dead,
+                "action" => $action
+            );
+        }
+
+        $response = array(
+            "draw" => intval($this->draw),
+            "iTotalRecords" => $response['count'],
+            "iTotalDisplayRecords" => $response['totalRecordswithFilter'],
+            "aaData" => $data_arr
+        );
+
+        echo json_encode($response);
     }
 }

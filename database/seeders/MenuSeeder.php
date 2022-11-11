@@ -277,6 +277,18 @@ class MenuSeeder extends Seeder
                 'file' => 'Modul.Laporan.Pindah',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
+            ],
+            [
+                'id' => 23,
+                'name' => 'Surat Pengantar',
+                'icon' => 'fas fa-truck-moving',
+                'url' => 'surat_pengantar',
+                'slug' => 'surat_pengantar',
+                'parent_id' => 10,
+                'sorting' => 23,
+                'file' => 'Modul.Surat.Pengantar',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]
         ])->keyBy($this->key);
     }

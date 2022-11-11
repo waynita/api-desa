@@ -15,7 +15,7 @@ class FamilySeeder extends Seeder
         $this->Family = collect([
             [
                 'number_family' => '119988877',
-                'head' => 'User1',
+                'head_id' => 3,
                 'village' => "Bekasi Timur",
                 'neighbourhood' => 1,
                 'hamlet' => 2,

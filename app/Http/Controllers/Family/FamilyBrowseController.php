@@ -20,9 +20,10 @@ class FamilyBrowseController extends Controller
 
         $response['count'] = Family::select('count(*) as allcount');
 
-        $response['totalRecordswithFilter'] = Family::where(function ($query) use ($searchValue) {
+        $response['totalRecordswithFilter'] = Family::join('users', 'family.head_id', 'users.id')
+            ->where(function ($query) use ($searchValue) {
                 $query->where("family.number_family", "like", "%". $searchValue . "%")
-                    ->orWhere("family.head", "like", "%". $searchValue . "%")
+                    ->orWhere("users.name", "like", "%". $searchValue . "%")
                     ->orWhere("family.village", "like", "%". $searchValue . "%")
                     ->orWhere("family.neighbourhood", "like", "%". $searchValue . "%")
                     ->orWhere("family.hamlet", "like", "%". $searchValue . "%")
@@ -31,15 +32,30 @@ class FamilyBrowseController extends Controller
                     ->orWhere("family.province", "like", "%". $searchValue . "%");
             });
                             
-        $response['records'] = Family::where(function ($query) use ($searchValue) {
-            $query->where("family.number_family", "like", "%". $searchValue . "%")
-                ->orWhere("family.head", "like", "%". $searchValue . "%")
-                ->orWhere("family.village", "like", "%". $searchValue . "%")
-                ->orWhere("family.neighbourhood", "like", "%". $searchValue . "%")
-                ->orWhere("family.hamlet", "like", "%". $searchValue . "%")
-                ->orWhere("family.sub_districts", "like", "%". $searchValue . "%")
-                ->orWhere("family.districts", "like", "%". $searchValue . "%")
-                ->orWhere("family.province", "like", "%". $searchValue . "%");
+        $response['records'] = Family::select(
+                // family
+                'family.id as id',
+                'family.number_family as number_family',
+                'family.head_id as head_id',
+                'family.village as village',
+                'family.sub_districts as sub_districts',
+                'family.districts as districts',
+                'family.province as province',
+
+                // user
+                'users.id as user_id',
+                'users.name as head'
+            )
+            ->join('users', 'family.head_id', 'users.id')
+            ->where(function ($query) use ($searchValue) {
+                $query->where("family.number_family", "like", "%". $searchValue . "%")
+                    ->orWhere("users.name", "like", "%". $searchValue . "%")
+                    ->orWhere("family.village", "like", "%". $searchValue . "%")
+                    ->orWhere("family.neighbourhood", "like", "%". $searchValue . "%")
+                    ->orWhere("family.hamlet", "like", "%". $searchValue . "%")
+                    ->orWhere("family.sub_districts", "like", "%". $searchValue . "%")
+                    ->orWhere("family.districts", "like", "%". $searchValue . "%")
+                    ->orWhere("family.province", "like", "%". $searchValue . "%");
             });  
 
         $response['count'] = $response['count']->count();

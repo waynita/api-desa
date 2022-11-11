@@ -16,7 +16,6 @@ class PopulationSeeder extends Seeder
         $this->Population = collect([
             [
                 'user_id' => 3,
-                'name' => 'user1',
                 'nik' => '1122334455',
                 'place_of_birth' => 'Bekasi',
                 'gender' => 'L',
@@ -31,7 +30,6 @@ class PopulationSeeder extends Seeder
             ],
             [
                 'user_id' => 4,
-                'name' => 'user2',
                 'nik' => '1122335566',
                 'place_of_birth' => 'Jambi',
                 'gender' => 'L',
