@@ -37,7 +37,6 @@ class MoveBrowseController extends Controller
                     
                     // Family
                     ->orWhere("family.number_family", "like", "%". $searchValue . "%")
-                    ->orWhere("family.head", "like", "%". $searchValue . "%")
 
                      // Population
                      ->orWhere("population.nik", "like", "%". $searchValue . "%");
@@ -55,7 +54,6 @@ class MoveBrowseController extends Controller
             
             // Family
             'family.number_family as number_family',
-            'family.head as head',
 
             // Population
             'population.nik as nik',
@@ -75,7 +73,6 @@ class MoveBrowseController extends Controller
 
                     // Family
                     ->orWhere("family.number_family", "like", "%". $searchValue . "%")
-                    ->orWhere("family.head", "like", "%". $searchValue . "%")
 
                     // Population
                     ->orWhere("population.nik", "like", "%". $searchValue . "%");
