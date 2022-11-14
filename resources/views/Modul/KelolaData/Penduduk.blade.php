@@ -36,13 +36,16 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Nik</th>
                                     <th>Nama</th>
-                                    <th>NIK</th>
-                                    <th>Tempat</th>
+                                    <th>Tempat/Tgl Lahir</th>
+                                    <th>Jekel</th>
+                                    <th>Alamat</th>
                                     <th>Agama</th>
+                                    <th>Status</th>
                                     <th>Pekerjaan</th>
                                     <th>KK</th>
-                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -78,13 +81,16 @@
                 }, 
                 columns: [
                     { data: 'id' },
-                    { data: 'name' },
                     { data: 'nik' },
+                    { data: 'name' },
+                    { data: 'place_of_birth' },
+                    { data: 'gender' },
                     { data: 'village' },
                     { data: 'religion' },
+                    { data: 'status' },
                     { data: 'occupation' },
-                    { data: 'number_family' },
-                    { data: 'status' }
+                    { data: 'family_number' },
+                    { data: 'action' }
                 ]
             })
         }

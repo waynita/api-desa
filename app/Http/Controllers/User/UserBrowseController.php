@@ -101,21 +101,28 @@ class UserBrowseController extends Controller
             $id = $record->id;
             $name = $record->name;
             $nik = $record->nik;
+            $place_of_birth = $record->place_of_birth;
+            $birthdate = $record->birthdate;
+            $gender = ($record->gender == 'l') ? 'Laki-Laki' : 'Perempuan';
             $village = $record->village;
             $religion = $record->religion;
             $occupation = $record->occupation;
             $number_family = $record->number_family;
-            $status = $record->status;
+            $married = $record->married;
+            $action = '';
             
             $data_arr[] = array(
-                "id" => $id,
-                "name" => $name,
-                "nik" => $nik,
-                "village" => $village,
-                "religion" => $religion,
-                "occupation" => $occupation,
-                "number_family" => $number_family,
-                "status" => $status
+                'id' => $id,
+                'nik' => $nik,
+                'name' => $name,
+                'place_of_birth' => $place_of_birth. "/" . $birthdate,
+                'gender' => $gender,
+                'village' => $village,
+                'religion' => $religion,
+                'status' =>  $married,
+                'occupation' => $occupation,
+                'family_number' => $number_family,
+                'action' => $action
             );
         }
 

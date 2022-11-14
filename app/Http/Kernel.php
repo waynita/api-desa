@@ -13,6 +13,26 @@ use App\Http\Middleware\Family\Insert as FamilyInsert;
 use App\Http\Middleware\Family\Update as FamilyUpdate;
 use App\Http\Middleware\Family\Delete as FamilyDelete;
 
+// Born
+use App\Http\Middleware\Born\Insert as BornInsert;
+use App\Http\Middleware\Born\Update as BornUpdate;
+use App\Http\Middleware\Born\Delete as BornDelete;
+
+// Comer
+use App\Http\Middleware\Comer\Delete as ComerDelete;
+use App\Http\Middleware\Comer\Insert as ComerInsert;
+use App\Http\Middleware\Comer\Update as ComerUpdate;
+
+// Dead
+use App\Http\Middleware\Dead\Insert as DeadInsert;
+use App\Http\Middleware\Dead\Update as DeadUpdate;
+use App\Http\Middleware\Dead\Delete as DeadDelete;
+
+// Move
+use App\Http\Middleware\Move\Delete as MoveDelete;
+use App\Http\Middleware\Move\Insert as MoveInsert;
+use App\Http\Middleware\Move\Update as MoveUpdate;
+
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -84,5 +104,24 @@ class Kernel extends HttpKernel
         'FamilyUpdate' => FamilyUpdate::class,
         'FamilyDelete' => FamilyDelete::class,
 
+        // Born
+        'BornInsert' => BornInsert::class,
+        'BornUpdate' => BornUpdate::class,
+        'BornDelete' => BornDelete::class,
+
+        // Comer
+        'ComerInsert' => ComerInsert::class,
+        'ComerUpdate' => ComerUpdate::class,
+        'ComerDelete' => ComerDelete::class,
+
+        // Dead
+        'DeadInsert' => DeadInsert::class,
+        'DeadUpdate' => DeadUpdate::class,
+        'DeadDelete' => DeadDelete::class,
+
+        // Pindah
+        'MoveInsert' => MoveInsert::class,
+        'MoveUpdate' => MoveUpdate::class,
+        'MoveDelete' => MoveDelete::class,
     ];
 }
