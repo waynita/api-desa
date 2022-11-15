@@ -26,8 +26,7 @@
                     <div class="card-header">
                         <h3 class="card-title"><b>{{$Pages['FilterMenu']->name}}</b></h3>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-danger">Create Data</i>
-                            </button>
+                            <a href="<?=URL($Pages['FilterMenu']->url.'/insert')?>" type="button" class="btn btn-danger">Create Data</a>
                         </div>
                     </div>
 
