@@ -30,9 +30,9 @@
                         </div>
 
                         <div class="card-body">
-                        <form>
-                            @include("Modul.Sirkulasi.Kematian.BaseForm.Form")
-                        </form>
+                            <form>
+                                @include("Modul.Sirkulasi.Kematian.BaseForm.Form")
+                            </form>
                         </div>
                     </div>
                 </div>

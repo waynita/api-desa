@@ -26,7 +26,7 @@
 
     <div class="col-sm-12">
         <div class="form-group">
-            <button type="submit" class="btn btn-success float-right">Tambah Data &nbsp;<i class='fas fa-download'></i></button>
+            <button type="submit" class="btn btn-primary float-right">Tambah Data &nbsp;<i class='fas fa-download'></i></button>
         </div>
     </div>
 </div>

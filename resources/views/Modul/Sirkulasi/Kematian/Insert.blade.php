@@ -13,7 +13,6 @@
                 <li class="breadcrumb-item"><a href="{{URL('/')}}">Home</a></li>
                 <li class="breadcrumb-item active"><a href="<?=URL($Pages['FilterMenu']->url);?>">{{$Pages['FilterMenu']->name}}</a></li>
                 <li class="breadcrumb-item active"><a href="<?=URL($Pages['FilterMenu']->url.'/'.$Pages['SubMenu']);?>">{{$Pages['SubMenu']}}</a></li>
-
                 </ol>
             </div>
             </div>
@@ -30,9 +29,9 @@
                         </div>
 
                         <div class="card-body">
-                        <form>
-                            @include("Modul.Sirkulasi.Kematian.BaseForm.Form")
-                        </form>
+                            <form>
+                                @include("Modul.Sirkulasi.Kematian.BaseForm.Form")
+                            </form>
                         </div>
                     </div>
                 </div>
