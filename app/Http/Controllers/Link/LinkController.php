@@ -13,8 +13,12 @@ class LinkController extends Controller
 
         $Pages = $this->FilterSubMenu($data);
         $Parent = $this->GetParent($Pages['FilterMenu']->slug);
+        $Url = $Pages['FilterMenu']->file;
+        if (isset($Pages['SubMenu'])) {
+            $Url = $Pages['FilterMenu']->file . "." . $Pages['SubMenu'];
+        }
         
-        return view($Pages['FilterMenu']->file)->with(compact('Data', 'Pages', 'Parent'));
+        return view($Url)->with(compact('Data', 'Pages', 'Parent'));
     }
 
     public function Page($data)
@@ -54,7 +58,8 @@ class LinkController extends Controller
             );
             if (isset($Data[1])) {
                 $Datas = array(
-                    'FilterMenu' => $this->GetMenu($Data[0]) . "." . ucfirst($Data[1])
+                    'FilterMenu' => $this->GetMenu($Data[0]),
+                    'SubMenu' => ucfirst($Data[1])
                 );
             }   
             if (isset($Data[2])) {

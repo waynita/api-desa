@@ -26,8 +26,7 @@
                     <div class="card-header">
                         <h3 class="card-title"><b>{{$Pages['FilterMenu']->name}}</b></h3>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-primary">Create Data</i>
-                            </button>
+                            <a href="<?=URL($Pages['FilterMenu']->url.'/insert')?>" type="button" class="btn btn-primary">Create Data</a>
                         </div>
                     </div>
 
@@ -38,10 +37,8 @@
                                     <th>ID</th>
                                     <th>Kartu Keluarga</th>
                                     <th>Kepala Keluarga</th>
-                                    <th>Tempat</th>
-                                    <th>Kecamatan</th>
-                                    <th>Daerah</th>
-                                    <th>Provinsi</th>
+                                    <th>Alamat</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -76,9 +73,7 @@
                     { data: 'number_family' },
                     { data: 'head' },
                     { data: 'village' },
-                    { data: 'sub_districts' },
-                    { data: 'districts' },
-                    { data: 'province' },
+                    { data: 'action' }
                 ]
             })
         }

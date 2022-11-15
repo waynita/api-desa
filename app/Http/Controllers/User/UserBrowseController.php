@@ -109,7 +109,7 @@ class UserBrowseController extends Controller
             $occupation = $record->occupation;
             $number_family = $record->number_family;
             $married = $record->married;
-            $action = '';
+            $action = '<a href="' . URL('data_penduduk/detail/'. $id) . '" type="button" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a> <a href="' . URL('data_penduduk/update/'. $id) . '" type="button" class="btn btn-warning btn-sm"><i class="fa fa-pen"></i></a>';
             
             $data_arr[] = array(
                 'id' => $id,

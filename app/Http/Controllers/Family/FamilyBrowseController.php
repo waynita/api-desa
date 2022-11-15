@@ -68,18 +68,14 @@ class FamilyBrowseController extends Controller
             $number_family = $record->number_family;
             $head = $record->head;
             $village = $record->village;
-            $sub_districts = $record->sub_districts;
-            $districts = $record->districts;
-            $province = $record->province;
+            $action = '<a href="'. URL('data_keluarga/detail/'. $id) .'" type="button" class="btn btn-primary btn-sm"><i class="fa fa-users"></i></a> <a href="'. URL('data_keluarga/update/'. $id) .'" type="button" class="btn btn-warning btn-sm"><i class="fa fa-pen"></i></a>';
             
             $data_arr[] = array(
                 "id" => $id,
                 "number_family" => $number_family,
                 "head" => $head,
                 "village" => $village,
-                "sub_districts" => $sub_districts,
-                "districts" => $districts,
-                "province" => $province,
+                "action" => $action,
             );
         }
 

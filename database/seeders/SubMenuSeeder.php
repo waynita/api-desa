@@ -16,21 +16,25 @@ class SubMenuSeeder extends Seeder
         $this->SubMenu = collect([
             [
                 'name' => 'detail',
+                'parameter' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'insert',
+                'parameter' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'update',
+                'parameter' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'print',
+                'parameter' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]

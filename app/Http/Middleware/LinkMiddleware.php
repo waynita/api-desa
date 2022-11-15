@@ -12,8 +12,10 @@ class LinkMiddleware
     public function validation($request) 
     { 
         $Data = explode('/', str_replace(' ', '', $request));
-        $MappingUrl = array_map(function ($Values, $Key) {
-            return $this->GetMenu($Values, $Key);
+        $Count = (count($Data)>2) ? count($Data) - 2 : count($Data);
+        
+        $MappingUrl = array_map(function ($Values, $Key) use ($Count) {
+            return $this->GetMenu($Values, $Key, $Count);
         }, $Data, array_keys($Data));
 
         if (in_array(false, $MappingUrl)) {
@@ -22,7 +24,7 @@ class LinkMiddleware
         return true;
     }
 
-    private function GetMenu($Values = null, $Key)
+    private function GetMenu($Values = null, $Key, $Count = 2)
     {
         if (empty($Values)) $Values = '/';
         if ($Key == 0) {
@@ -32,7 +34,12 @@ class LinkMiddleware
             }
         }
         if ($Key == 1) {
-            $Exists = SubMenu::where('name', $Values)->exists();
+            $Exists = SubMenu::where('name', $Values)->first();
+            if (!empty($Exists->parameter)) {
+                if ($Count != $Exists->parameter) {
+                    return false;
+                }
+            }
             if (!$Exists) {
                 return false;
             }

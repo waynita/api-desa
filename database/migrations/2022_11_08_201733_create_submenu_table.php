@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('submenu', function (Blueprint $table) {
             $table->id();
             $table->string('name', 191);
+            $table->tinyInteger('parameter')->nullable();
             $table->timestamps();
         });
     }

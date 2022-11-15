@@ -56,7 +56,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"> 
           @foreach($Data as $Values)
           <li class="nav-item {{$Values['slug']}}">
-            <a href="{{ $Values['url'] }}" class="nav-link {{$Values['slug']}}">
+            <a href="{{ URL($Values['url']) }}" class="nav-link {{$Values['slug']}}">
               <i class="nav-icon {{ $Values['icon'] }}"></i>
               <p>
               {{ $Values['name'] }}
@@ -69,7 +69,7 @@
             @foreach($Values['child'] as $Child)
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ $Child['url'] }}" class="nav-link {{$Child['slug']}}">
+                <a href="{{ URL($Child['url']) }}" class="nav-link {{$Child['slug']}}">
                   <i class="{{ $Child['icon'] }} nav-icon"></i>
                   <p>{{ $Child['name'] }}</p>
                 </a>
