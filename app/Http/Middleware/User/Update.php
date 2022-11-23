@@ -24,6 +24,7 @@ class Update extends BaseMiddleware
                 $this->Model->Population->place_of_birth = $this->_Request->input('tempatLahir');
                 $this->Model->Population->gender = $this->_Request->input('jenisKelamin');
                 $this->Model->Population->village = $this->_Request->input('desa');
+                $this->Model->Population->address = $this->_Request->input('alamat');
                 $this->Model->Population->neighbourhood = $this->_Request->input('rt');
                 $this->Model->Population->hamlet = $this->_Request->input('rw');
                 $this->Model->Population->religion = $this->_Request->input('agama');
@@ -49,6 +50,7 @@ class Update extends BaseMiddleware
             'desa' => [ 'string', 'min:1', 'max:150'],
             'rt' => ['integer'],
             'rw' => ['integer'],
+            'alamat' => ['string', 'min:1', 'max:191'],
             'agama' => ['string', 'min:1', 'max:150'],
             'statusPerkawinan' => ['string', 'min:1', 'max:150'],
             'pekerjaan' => ['string', 'min:1', 'max:150']

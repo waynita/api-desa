@@ -11,7 +11,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{URL('/')}}">Home</a></li>
-                <li class="breadcrumb-item active"><a href="<?=URL($Pages['FilterMenu']->url);?>">{{$Pages['FilterMenu']->name}}</a></li>
+                <li class="breadcrumb-item active"><a href="{{ URL('sirkulasi_pindah') }}">Pindah</a></li>
                 </ol>
             </div>
             </div>
@@ -24,14 +24,14 @@
             <div class="col-md-12">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title"><b>{{$Pages['FilterMenu']->name}}</b></h3>
+                        <h3 class="card-title"><b>Data Pindah</b></h3>
                         <div class="card-tools">
-                            <a href="<?=URL($Pages['FilterMenu']->url.'/insert')?>" type="button" class="btn btn-primary">Create Data</a>
+                            <a href="" type="button" class="btn btn-primary">Create Data</a>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        <table class="table table-hover pricelist" id="{{$Pages['FilterMenu']->slug}}">
+                        <table class="table table-hover pricelist" id="data_pindah">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -56,7 +56,7 @@
 @section('script')
 <script>
     $("document").ready(function(){
-        get_table($("#" + "{{$Pages['FilterMenu']->slug}}"));
+        get_table($("#data_pindah"));
 
         function get_table(tables){ 
             var dataTable = tables.DataTable({

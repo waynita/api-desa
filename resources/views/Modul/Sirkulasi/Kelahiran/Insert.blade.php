@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="card-body">
-                        <form>
+                        <form class="form-born">
                             @include("Modul.Sirkulasi.Kelahiran.BaseForm.Form")
                         </form>
                         </div>
@@ -41,3 +41,47 @@
     </section>
 </div>
 @endsection 
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $(".form-born").submit(function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            var btn = $(".btn");
+            var formdata = new FormData(this);
+            
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+                }
+            });
+            $.ajax({
+                url: '{{URL("api/born/insert")}}',
+                data: formdata,
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: 'json',
+                type: 'POST',
+                beforeSend: function(){
+                    toastr.warning('Loadings...');
+                },
+                success: function(d){
+                    toastr.success("behasil masuk");
+                    window.location.href = "{{URL('/sirkulasi_data_lahir')}}";
+                },
+                error: function(e){
+                    if (e.status == 401) {
+                        toastr.error(e.responseJSON.error.status);
+                        window.location.href = "{{URL('/')}}";
+                    }
+                    e.responseJSON.errors.forEach(function(item) {
+                        toastr.error(JSON.stringify(item));
+                    });
+                }
+            });
+        });
+    })
+</script>
+@endsection

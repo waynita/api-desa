@@ -33,5 +33,52 @@ Route::post("get_user", [UserBrowseController::class,"Anything"])->name('GetUser
 
 Route::post("user/insert", [UserController::class,"Insert"])->name('UserInsert');
 
-Route::get("/", [LinkController::class,"Anything"])->middleware('link');
-Route::get("/{query}", [LinkController::class,"Anything"])->where('query', '.+')->middleware('link');
+Route::get("/", function() { return view("Modul.Dashboard"); });
+
+// Data
+Route::get("/data_penduduk", function() { return view("Modul.KelolaData.Penduduk"); });
+Route::get("/data_keluarga", function() { return view("Modul.KelolaData.Keluarga"); });
+
+Route::get("/sirkulasi_data_lahir", function() { return view("Modul.Sirkulasi.Kelahiran"); });
+Route::get("/sirkulasi_meninggal", function() { return view("Modul.Sirkulasi.Kematian"); });
+Route::get("/sirkulasi_pendatang", function() { return view("Modul.Sirkulasi.Pendatang"); });
+Route::get("/sirkulasi_pindah", function() { return view("Modul.Sirkulasi.Pindah"); });
+
+Route::get("/surat_domilisi", function() { return view("Modul.Surat.Domisili"); });
+Route::get("/surat_kelahiran", function() { return view("Modul.Surat.Kelahiran"); });
+Route::get("/surat_kematian", function() { return view("Modul.Surat.Kematian"); });
+Route::get("/surat_pendatang", function() { return view("Modul.Surat.Pendatang"); });
+Route::get("/surat_pindah", function() { return view("Modul.Surat.Pindah"); });
+
+Route::get("/laporan_penduduk", function() { return view("Modul.Laporan.Penduduk"); });
+Route::get("/laporan_keluarga", function() { return view("Modul.Laporan.Keluarga"); });
+Route::get("/laporan_lahir", function() { return view("Modul.Laporan.Kelahiran"); });
+Route::get("/laporan_meninggal", function() { return view("Modul.Laporan.Meninggal"); });
+Route::get("/laporan_pendatang", function() { return view("Modul.Laporan.Pendatang"); });
+Route::get("/laporan_pindah", function() { return view("Modul.Laporan.Pindah"); });
+Route::get("/surat_pengantar", function() { return view("Modul.Surat.Pengantar"); });
+// end Data
+
+// Insert
+Route::get("/data_penduduk/insert", function() { return view("Modul.KelolaData.Penduduk.Insert"); });
+Route::get("/data_keluarga/insert", function() { return view("Modul.KelolaData.Keluarga.Insert"); });
+
+Route::get("/sirkulasi_data_lahir/insert", function() { return view("Modul.Sirkulasi.Kelahiran.Insert"); });
+Route::get("/sirkulasi_meninggal/insert", function() { return view("Modul.Sirkulasi.Kematian.Insert"); });
+Route::get("/sirkulasi_pendatang/insert", function() { return view("Modul.Sirkulasi.Pendatang.Insert"); });
+Route::get("/sirkulasi_pindah/insert", function() { return view("Modul.Sirkulasi.Pindah.Insert"); });
+
+Route::get("/surat_domilisi/insert", function() { return view("Modul.Surat.Domisili.Insert"); });
+Route::get("/surat_kelahiran/insert", function() { return view("Modul.Surat.Kelahiran.Insert"); });
+Route::get("/surat_kematian/insert", function() { return view("Modul.Surat.Kematian.Insert"); });
+Route::get("/surat_pendatang/insert", function() { return view("Modul.Surat.Pendatang.Insert"); });
+Route::get("/surat_pindah/insert", function() { return view("Modul.Surat.Pindah.Insert"); });
+
+Route::get("/laporan_penduduk/insert", function() { return view("Modul.Laporan.Penduduk.Insert"); });
+Route::get("/laporan_keluarga/insert", function() { return view("Modul.Laporan.Keluarga.Insert"); });
+Route::get("/laporan_lahir/insert", function() { return view("Modul.Laporan.Kelahiran.Insert"); });
+Route::get("/laporan_meninggal/insert", function() { return view("Modul.Laporan.Meninggal.Insert"); });
+Route::get("/laporan_pendatang/insert", function() { return view("Modul.Laporan.Pendatang.Insert"); });
+Route::get("/laporan_pindah/insert", function() { return view("Modul.Laporan.Pindah.Insert"); });
+Route::get("/surat_pengantar/insert", function() { return view("Modul.Surat.Pengantar.Insert"); });
+// end Insert

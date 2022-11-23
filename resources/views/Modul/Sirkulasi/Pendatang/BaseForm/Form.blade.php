@@ -2,35 +2,35 @@
     <div class="col-sm-12">
         <div class="form-group">
             <label>Kartu Tanda Pengenal</label>
-            <input type="text" class="form-control" placeholder="Nomor KTP / SIM / Kartu Pengenal">
+            <input type="text" class="form-control" name="nik"  placeholder="Nomor KTP / SIM / Kartu Pengenal">
         </div>
     </div>
 
     <div class="col-sm-12">
         <div class="form-group">
             <label>Nama Pendatang</label>
-            <input type="text" class="form-control" placeholder="Nama Pendatang">
+            <input type="text" class="form-control" name="name" placeholder="Nama Pendatang">
         </div>
     </div>
 
     <div class="col-sm-6">
         <div class="form-group">
             <label>Jenis Kelamin</label>
-            <input type="text" class="form-control" placeholder="Jenis Kelamin">
+            <input type="text" class="form-control" name="gender" placeholder="Jenis Kelamin">
         </div>
     </div>
 
     <div class="col-sm-6">
         <div class="form-group">
             <label>Tanggal Datang</label>
-            <input type="datetime-local" class="form-control" placeholder="Enter ...">
+            <input type="datetime-local" class="form-control" name="date_of_come" placeholder="Enter ...">
         </div>
     </div>
 
     <div class="col-sm-12">
         <div class="form-group">
             <label>Pelapor</label>
-            <input type="text" class="form-control" placeholder="Pelapor">
+            <input type="text" class="form-control" name="whistleblower_id" placeholder="Pelapor">
         </div>
     </div>
 

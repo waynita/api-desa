@@ -2,21 +2,21 @@
     <div class="col-sm-6">
         <div class="form-group">
             <label>Warga Meninggal</label>
-            <input type="text" class="form-control" placeholder="Warga Meninggal">
+            <input type="text" class="form-control" name="user_id" placeholder="Warga Meninggal">
         </div>
     </div>
 
     <div class="col-sm-6">
         <div class="form-group">
             <label>Tanggal Meninggal</label>
-            <input type="datetime-local" class="form-control" placeholder="Enter ...">
+            <input type="datetime-local" class="form-control" name="date_of_death" placeholder="Enter ...">
         </div>
     </div>
 
     <div class="col-sm-12">
         <div class="form-group">
             <label>Penyebab Kematian</label>
-            <input type="text" class="form-control" placeholder="Penyebab Meninggal">
+            <input type="text" class="form-control" name="cause_of_death" placeholder="Penyebab Meninggal">
         </div>
     </div>
 

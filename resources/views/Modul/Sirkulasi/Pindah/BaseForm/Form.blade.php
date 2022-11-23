@@ -2,21 +2,21 @@
     <div class="col-sm-12">
         <div class="form-group">
             <label>Warga Pindah</label>
-            <input type="text" class="form-control" placeholder="Nama Warga">
+            <input type="text" class="form-control" name="user_id" placeholder="Nama Warga">
         </div>
     </div>
 
     <div class="col-sm-12">
         <div class="form-group">
             <label>Alasan Pindah</label>
-            <input type="text" class="form-control" placeholder="Alasan Pindah">
+            <input type="text" class="form-control" name="reason" placeholder="Alasan Pindah">
         </div>
     </div>
 
     <div class="col-sm-12">
         <div class="form-group">
             <label>Tanggal Pindah</label>
-            <input type="datetime-local" class="form-control" placeholder="Enter ...">
+            <input type="datetime-local" class="form-control" name="date_of_move" placeholder="Enter ...">
         </div>
     </div>
 

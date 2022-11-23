@@ -2,67 +2,75 @@
     <div class="col-sm-12">
         <div class="form-group">
             <label>Nama Warga</label>
-            <input type="text" class="form-control" placeholder="Nama Warga">
+            <input type="text" class="form-control" name="nama" placeholder="Nama Warga">
         </div>
     </div>
     <div class="col-sm-12">
         <div class="form-group">
             <label>NIK</label>
-            <input type="text" class="form-control" placeholder="Nomor KTP">
+            <input type="text" class="form-control" name="nik" placeholder="Nomor KTP">
         </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
             <label>Tempat Lahir</label>
-            <input type="text" class="form-control" placeholder="Enter ...">
+            <input type="text" class="form-control" name="tempatLahir" placeholder="Enter ...">
         </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
             <label>Tanggal Lahir</label>
-            <input type="text" class="form-control" placeholder="Enter ...">
+            <input type="date" class="form-control" name="tanggalLahir" placeholder="Enter ...">
         </div>
     </div>
     <div class="col-sm-4">
         <div class="form-group">
             <label>Jenis Kelamin</label>
-            <input type="text" class="form-control" placeholder="Enter ...">
+            <input type="text" class="form-control" name="jenisKelamin" placeholder="Enter ...">
         </div>
     </div>
     <div class="col-sm-4">
         <div class="form-group">
             <label>Agama</label>
-            <input type="text" class="form-control" placeholder="Enter ...">
+            <input type="text" class="form-control" name="agama" placeholder="Enter ...">
         </div>
     </div>
     <div class="col-sm-4">
         <div class="form-group">
             <label>Status Perkawinan</label>
-            <input type="text" class="form-control" placeholder="Enter ...">
+            <input type="text" class="form-control" name="statusPerkawinan" placeholder="Enter ...">
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <div class="form-group">
             <label>Alamat</label>
-            <textarea type="text" style='height:200px;' class="form-control" placeholder="Enter ..."></textarea>
+            <textarea type="text" style='height:200px;' name="address" class="form-control" placeholder="Enter ..."></textarea>
         </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label>Desa</label>
+            <input type="text" class="form-control" name="desa" placeholder="Enter ...">
+        </div>
+    </div>
+    <div class="col-sm-2">
         <div class="form-group">
             <label>Rt</label>
-            <input type="number" class="form-control" placeholder="Enter ...">
+            <input type="number" class="form-control" name="rt" placeholder="Enter ...">
         </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <div class="form-group">
             <label>Rw</label>
-            <input type="number" class="form-control" placeholder="Enter ...">
+            <input type="number" class="form-control" name="rw" placeholder="Enter ...">
         </div>
     </div>
+
+
     <div class="col-sm-12">
         <div class="form-group">
             <label>Pekerjaan</label>
-            <input type="text" class="form-control" placeholder="Enter ...">
+            <input type="text" class="form-control" name="pekerjaan" placeholder="Enter ...">
         </div>
     </div>
     <div class="col-sm-12">

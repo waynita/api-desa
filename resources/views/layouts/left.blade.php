@@ -52,43 +52,182 @@
       </div>
       
       <!-- Sidebar Menu -->
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"> 
-          @foreach($Data as $Values)
-          <li class="nav-item {{$Values['slug']}}">
-            <a href="{{ URL($Values['url']) }}" class="nav-link {{$Values['slug']}}">
-              <i class="nav-icon {{ $Values['icon'] }}"></i>
+          <li class="nav-item dashboard">
+            <a href="/" class="nav-link dashboard">
+              <i class="nav-icon fas fa-envelope"></i>
               <p>
-              {{ $Values['name'] }}
-              @if(!empty($Values['child']))
+                Dashboard
+              </p>
+            </a>
+          </li>  
+        
+          <li class="nav-item dashboard">
+            <a href="#" class="nav-link dashboard">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+              Kelola Data
                 <i class="right fas fa-angle-left"></i>
-              @endif
               </p>
             </a>
 
-            @foreach($Values['child'] as $Child)
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ URL($Child['url']) }}" class="nav-link {{$Child['slug']}}">
-                  <i class="{{ $Child['icon'] }} nav-icon"></i>
-                  <p>{{ $Child['name'] }}</p>
+                <a href="{{ URL('data_penduduk') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Penduduk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('data_keluarga') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Keluarga</p>
                 </a>
               </li>
             </ul>
-            @endforeach
           </li>
-          @endforeach
+
+          <li class="nav-item dashboard">
+            <a href="#" class="nav-link dashboard">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+              Sirkulasi Penduduk
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ URL('sirkulasi_data_lahir') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Kelahiran</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('sirkulasi_meninggal') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Meninggal</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('sirkulasi_pendatang') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Pendatang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('sirkulasi_pindah') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Pindah</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dashboard">
+            <a href="#" class="nav-link dashboard">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+              Kelola Surat
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Surat Domisili</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Surat Kelahiran</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Surat Kematian</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Surat Pendatang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Surat Pindah</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Surat Pengantar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dashboard">
+            <a href="#" class="nav-link dashboard">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+              Laporan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Penduduk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Keluarga</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Lahir</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Meninggal</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Pendatang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ URL('') }}" class="nav-link dashboard">
+                  <i class="fas fa-envelope nav-icon"></i>
+                  <p>Data Pindah</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </div>
   </aside>
 
   <script>
-    $("document").ready(function(){
-      var parent = "{{$Parent->slug}}";
-      $( "."+parent).addClass( "menu-is-opening menu-open active" );
-
-      var modul = "{{$Pages['FilterMenu']->slug}}";
-      $( "."+modul).addClass( "active" );
-    });
+    
   </script>

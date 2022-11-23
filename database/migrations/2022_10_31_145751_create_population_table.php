@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('place_of_birth', 150)->nullable();
             $table->enum('gender', ['l', 'p'])->default('l');
             $table->string('village', 191);
+            $table->string('address', 191)->nullable();
             $table->integer('neighbourhood');
             $table->integer('hamlet');
             $table->string('religion', 191)->nullable();

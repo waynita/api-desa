@@ -2,25 +2,25 @@
     <div class="col-sm-12">
         <div class="form-group">
             <label>Keluarga</label>
-            <input type="text" class="form-control" placeholder="Keluarga">
+            <input type="text" class="form-control" name="family_id" placeholder="Keluarga">
         </div>
     </div>
     <div class="col-sm-12">
         <div class="form-group">
             <label>Nama</label>
-            <input type="text" class="form-control" placeholder="Nama">
+            <input type="text" class="form-control" name="name" placeholder="Nama">
         </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
             <label>Jenis Kelamin</label>
-            <input type="text" class="form-control" placeholder="Enter ...">
+            <input type="text" class="form-control" name="gender" placeholder="Enter ...">
         </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
             <label>Tanggal Lahir</label>
-            <input type="datetime-local" class="form-control" placeholder="Enter ...">
+            <input type="date" class="form-control" name="date_of_birth" placeholder="Enter ...">
         </div>
     </div>
 
