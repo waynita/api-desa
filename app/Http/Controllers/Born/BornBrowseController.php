@@ -58,9 +58,9 @@ class BornBrowseController extends Controller
             $id = $record->id;
             $name = $record->name;
             $date_of_birth = $record->date_of_birth;
-            $gender = $record->gender;
+            $gender = ($record->gender == 'l') ? 'Laki - Laki' : 'Perempuan';
             $family = $record->number_family . " - " . $record->head;
-            $action = "test";
+            $action = '<a type="button" onClick="deletes('. $id .')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>';
             
             $data_arr[] = array(
                 "id" => $id,

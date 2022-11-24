@@ -72,7 +72,7 @@ class DeadBrowseController extends Controller
             $name = $record->name;
             $date_of_dead = $record->date_of_death;
             $cause_of_dead = $record->cause_of_death;
-            $action = "test";
+            $action = '<a type="button" onClick="deletes('. $id .')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>';
             
             $data_arr[] = array(
                 "id" => $id,

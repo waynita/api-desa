@@ -64,10 +64,10 @@ class ComerBrowseController extends Controller
             $id = $record->id;
             $nik = $record->nik;
             $name = $record->name;
-            $gender = $record->gender;
+            $gender = ($record->gender == 'l') ? 'Laki - Laki' : 'Perempuan';
             $date_of_come = $record->date_of_come;
             $pelapor = $record->pelapor;
-            $action = "test";
+            $action = '<a type="button" onClick="deletes('. $id .')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>';
             
             $data_arr[] = array(
                 "id" => $id,
