@@ -49,7 +49,9 @@
                                         <td>{{$val->nik}}</td>
                                         <td>{{$val->relation}}</td>
                                         <td>
+                                            @if ($Family->head_id != $val->user_id)
                                             <button" onClick="deletesUser({{$val->user_id}})" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i></button>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
