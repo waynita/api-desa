@@ -17,7 +17,7 @@ trait Datatables
 
         $this->columnIndex = $this->columnIndex_arr[0]['column']; // Column index
         $this->columnName = $this->columnName_arr[$this->columnIndex]['data']; // Column name
-        $this->columnSortOrder = $this->order_arr[0]['dir'];
+        $this->columnSortOrder = "DESC";// $this->order_arr[0]['dir'];
         $this->searchValue = $this->search_arr['value']; // Search value
 
         return $this;

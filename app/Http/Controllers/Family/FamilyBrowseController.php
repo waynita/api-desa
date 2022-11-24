@@ -32,7 +32,7 @@ class FamilyBrowseController extends Controller
                     ->orWhere("family.province", "like", "%". $searchValue . "%");
             });
                             
-        $response['records'] = Family::select(
+        $response['records'] = Family::orderBy($this->columnName,$this->columnSortOrder)->select(
                 // family
                 'family.id as id',
                 'family.number_family as number_family',
@@ -88,5 +88,45 @@ class FamilyBrowseController extends Controller
 
         echo json_encode($response);
         exit; 
+    }
+
+    public function getFamily(Request $request)
+    {
+        $search = $request['search'];
+        $user = Family::select(
+                // family
+                'family.id as id',
+                'family.number_family as number_family',
+                'family.head_id as head_id',
+                'family.village as village',
+                'family.sub_districts as sub_districts',
+                'family.districts as districts',
+                'family.province as province',
+
+                // user
+                'users.id as user_id',
+                'users.name as head',
+                'users.family_id as family_id'            
+            )->join(
+                'users', 
+                'users.id', 
+                'family.head_id',
+                )
+                ->where(function ($query) use ($search) {
+                    $query->where("family.number_family", "like", "%". $search . "%")
+                        ->orWhere("users.name", "like", "%". $search . "%");
+                    })
+                    ->orderBy('id')
+                    ->simplePaginate(50);
+                    
+        $res = [];
+        foreach($user as $row){
+            $res[] = [
+                'id' => $row['id'],
+                'text'=> $row['head'] . " | " . $row['number_family']
+            ];
+        }
+        $out['results'] = $res;        
+        return $out;
     }
 }

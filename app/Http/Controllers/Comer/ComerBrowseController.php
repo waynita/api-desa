@@ -32,7 +32,7 @@ class ComerBrowseController extends Controller
                     ->orWhere("users.birthdate", "like", "%". $searchValue . "%");
             })->whereBetween('comer.created_at', [$date_from, $date_end]);
                             
-        $response['records'] = Comer::select(
+        $response['records'] = Comer::orderBy($this->columnName,$this->columnSortOrder)->select(
             'comer.id as id',
             'comer.nik as nik',
             'comer.name as name',

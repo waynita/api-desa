@@ -26,7 +26,7 @@
                     <div class="card-header">
                         <h3 class="card-title"><b>Data Penduduk</b></h3>
                         <div class="card-tools">
-                            <a href="" type="button" class="btn btn-success">Create Data</a>
+                            <a href="{{ URL('data_penduduk/insert') }}" type="button" class="btn btn-success">Create Data</a>
                         </div>
                     </div>
 

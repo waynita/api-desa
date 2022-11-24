@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="form-group">
             <label>Warga Pindah</label>
-            <input type="text" class="form-control" name="user_id" placeholder="Nama Warga">
+            <select required class="form-control select2" id="user" name="user_id" style="width: 100%;"></select>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
     <div class="col-sm-12">
         <div class="form-group">
             <label>Tanggal Pindah</label>
-            <input type="datetime-local" class="form-control" name="date_of_move" placeholder="Enter ...">
+            <input type="date" class="form-control" name="date_of_move" placeholder="Enter ...">
         </div>
     </div>
 

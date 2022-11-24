@@ -16,21 +16,24 @@
     <div class="col-sm-6">
         <div class="form-group">
             <label>Jenis Kelamin</label>
-            <input type="text" class="form-control" name="gender" placeholder="Jenis Kelamin">
+            <select class="form-control" name="gender" >
+                <option value="l" selected>Laki - Laki</option>
+                <option value="p">Perempuan</option>
+            </select>
         </div>
     </div>
 
     <div class="col-sm-6">
         <div class="form-group">
             <label>Tanggal Datang</label>
-            <input type="datetime-local" class="form-control" name="date_of_come" placeholder="Enter ...">
+            <input type="date" class="form-control" name="date_of_come" placeholder="Enter ...">
         </div>
     </div>
 
     <div class="col-sm-12">
         <div class="form-group">
             <label>Pelapor</label>
-            <input type="text" class="form-control" name="whistleblower_id" placeholder="Pelapor">
+            <select required class="form-control select2" id="user" name="whistleblower_id" style="width: 100%;"></select>
         </div>
     </div>
 

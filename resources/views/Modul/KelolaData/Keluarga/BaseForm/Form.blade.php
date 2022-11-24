@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="form-group">
-            <label>Nama Kartu Keluarga</label>
+            <label>Nomor Kartu Keluarga</label>
             <input type="text" class="form-control" name="number_family" placeholder="Nomor Kartu Keluarga">
         </div>
     </div>
@@ -46,7 +46,7 @@
     <div class="col-sm-12">
         <div class="form-group">
             <label>Kepala Keluarga</label>
-            <input type="text" class="form-control" name="user_id" placeholder="Kepala Keluarga">
+            <select required class="form-control select2" id="user" name="user_id" style="width: 100%;"></select>
         </div>
     </div>
    

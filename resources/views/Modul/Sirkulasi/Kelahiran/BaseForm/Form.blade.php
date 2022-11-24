@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="form-group">
             <label>Keluarga</label>
-            <input type="text" class="form-control" name="family_id" placeholder="Keluarga">
+            <select required class="form-control select2" id="family" name="family_id" style="width: 100%;"></select>
         </div>
     </div>
     <div class="col-sm-12">
@@ -14,7 +14,10 @@
     <div class="col-sm-6">
         <div class="form-group">
             <label>Jenis Kelamin</label>
-            <input type="text" class="form-control" name="gender" placeholder="Enter ...">
+            <select class="form-control" name="gender" >
+                <option value="l" selected>Laki - Laki</option>
+                <option value="p">Perempuan</option>
+            </select>
         </div>
     </div>
     <div class="col-sm-6">

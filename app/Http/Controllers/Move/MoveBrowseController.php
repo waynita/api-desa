@@ -42,7 +42,7 @@ class MoveBrowseController extends Controller
                      ->orWhere("population.nik", "like", "%". $searchValue . "%");
             })->whereBetween('move.created_at', [$date_from, $date_end]);
                             
-        $response['records'] = Move::select(
+        $response['records'] = Move::orderBy($this->columnName,$this->columnSortOrder)->select(
             'move.id as id',
             'move.date_of_move as date_of_move',
             'move.reason as reason',

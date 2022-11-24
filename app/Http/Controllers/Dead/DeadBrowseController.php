@@ -34,7 +34,7 @@ class DeadBrowseController extends Controller
                     ->orWhere("users.birthdate", "like", "%". $searchValue . "%");
             });
                             
-        $response['records'] = Dead::select(
+        $response['records'] = Dead::orderBy($this->columnName,$this->columnSortOrder)->select(
             'dead.id as id',
             'dead.cause_of_death as cause_of_death',
             'dead.date_of_death as date_of_death',

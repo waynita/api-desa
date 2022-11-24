@@ -82,3 +82,7 @@ Route::get("/laporan_pendatang/insert", function() { return view("Modul.Laporan.
 Route::get("/laporan_pindah/insert", function() { return view("Modul.Laporan.Pindah.Insert"); });
 Route::get("/surat_pengantar/insert", function() { return view("Modul.Surat.Pengantar.Insert"); });
 // end Insert
+
+
+Route::post("/getUser", [UserBrowseController::class, "getUser"])->name("getUser");
+Route::post("/getFamily", [FamilyBrowseController::class, "getFamily"])->name("getFamily");

@@ -2,7 +2,7 @@
     <div class="col-sm-6">
         <div class="form-group">
             <label>Warga Meninggal</label>
-            <input type="text" class="form-control" name="user_id" placeholder="Warga Meninggal">
+            <select required class="form-control select2" id="user" name="user_id" style="width: 100%;"></select>
         </div>
     </div>
 

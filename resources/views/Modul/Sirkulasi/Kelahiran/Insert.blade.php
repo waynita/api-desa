@@ -11,8 +11,8 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{URL('/')}}">Home</a></li>
-                <li class="breadcrumb-item active"><a href="<?=URL($Pages['FilterMenu']->url);?>">{{$Pages['FilterMenu']->name}}</a></li>
-                <li class="breadcrumb-item active"><a href="<?=URL($Pages['FilterMenu']->url.'/'.$Pages['SubMenu']);?>">{{$Pages['SubMenu']}}</a></li>
+                <li class="breadcrumb-item active"><a href="{{ URL('sirkulasi_data_lahir') }}">Kelahiran</a></li>
+                <li class="breadcrumb-item active"><a href="{{ URL('sirkulasi_data_lahir/insert') }}">Insert</a></li>
 
                 </ol>
             </div>
@@ -26,7 +26,7 @@
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><b>{{$Pages['FilterMenu']->name}}</b></h3>
+                            <h3 class="card-title"><b>Data Kelahiran</b></h3>
                         </div>
 
                         <div class="card-body">
@@ -76,11 +76,43 @@
                         toastr.error(e.responseJSON.error.status);
                         window.location.href = "{{URL('/')}}";
                     }
-                    e.responseJSON.errors.forEach(function(item) {
-                        toastr.error(JSON.stringify(item));
-                    });
+                    toastr.error(JSON.stringify(e.responseJSON.errors));
                 }
             });
+        });
+
+        $('#family').select2({
+            ajax: { 
+                url: "{{route('getFamily')}}",
+                type: "post",
+                dataType: 'json',
+                delay: 250,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                },
+                data: function (params) {
+                    return {
+                        search: params.term, // search term
+                        page: params.page || 1 // search page
+                    };
+                },
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    return {
+                        results: data.results,
+                        pagination: {
+                            more: (params.page * 10) < data.count_filtered
+                        }
+                    };
+                },
+                cache: false
+            },
+            theme: 'bootstrap4',
+            placeholder: "Pilih Keluarga",
+        }).on('select2:select',function(e) {
+            var data = e.params.data;
+            var form=$(this).closest('form');
+            var val=data.id;
         });
     })
 </script>

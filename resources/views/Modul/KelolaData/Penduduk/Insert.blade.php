@@ -11,8 +11,8 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{URL('/')}}">Home</a></li>
-                <li class="breadcrumb-item active"><a href="<?=URL($Pages['FilterMenu']->url);?>">{{$Pages['FilterMenu']->name}}</a></li>
-                <li class="breadcrumb-item active"><a href="<?=URL($Pages['FilterMenu']->url.'/'.$Pages['SubMenu']);?>">{{$Pages['SubMenu']}}</a></li>
+                <li class="breadcrumb-item active"><a href="{{ URL('data_penduduk') }}">Penduduk</a></li>
+                <li class="breadcrumb-item active"><a href="{{ URL('data_penduduk/insert') }}">Insert</a></li>
 
                 </ol>
             </div>
@@ -26,7 +26,7 @@
                 <div class="col-md-12">
                     <div class="card card-outline card-success">
                         <div class="card-header">
-                            <h3 class="card-title"><b>{{$Pages['FilterMenu']->name}}</b></h3>
+                            <h3 class="card-title"><b>Data Penduduk</b></h3>
                         </div>
 
                         <div class="card-body">
@@ -76,10 +76,7 @@
                         toastr.error(e.responseJSON.error.status);
                         window.location.href = "{{URL('/')}}";
                     }
-                    console.log(e);
-                    e.responseJSON.errors.forEach(function(item) {
-                        toastr.error(JSON.stringify(item));
-                    });
+                    toastr.error(JSON.stringify(e.responseJSON.errors));
                 }
             });
         });

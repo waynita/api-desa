@@ -30,7 +30,7 @@ class BornBrowseController extends Controller
                     ->orWhere("family.number_family", "like", "%". $searchValue . "%");
             })->whereBetween('born.created_at', [$date_from, $date_end]);
                             
-        $response['records'] = Born::select(
+        $response['records'] = Born::orderBy($this->columnName,$this->columnSortOrder)->select(
             'born.id as id',
             'born.name as name',
             'born.gender as gender',

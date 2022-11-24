@@ -136,4 +136,38 @@ class UserBrowseController extends Controller
         echo json_encode($response);
         exit; 
     }
+
+    public function getUser(Request $request)
+    {
+        $search = $request['search'];
+        $user = User::select(
+            'users.id as id',
+            'users.name as name',
+            'population.nik as nik'
+            )->join(
+                'population', 
+                'population.user_id', 
+                'users.id')
+                ->where(function ($query) use ($search) {
+                    $query->where("population.nik", "like", "%". $search . "%")
+                        ->orWhere("users.name", "like", "%". $search . "%");
+                    });
+                        
+        if (isset($request['family'])) {
+            $user = $user->where('users.family_id', null);
+        }
+        
+        $user = $user->where('users.status', 'active');
+        $user = $user->orderBy('id')->simplePaginate(50);
+                    
+        $res = [];
+        foreach($user as $row){
+            $res[] = [
+                'id' => $row['id'],
+                'text'=> $row['name'] . " | " . $row['nik']
+            ];
+        }
+        $out['results'] = $res;        
+        return $out;
+    }
 }

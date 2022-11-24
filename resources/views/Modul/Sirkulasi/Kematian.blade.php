@@ -26,7 +26,7 @@
                     <div class="card-header">
                         <h3 class="card-title"><b>Data Kematian</b></h3>
                         <div class="card-tools">
-                            <a href="" type="button" class="btn btn-danger">Create Data</a>
+                            <a href="{{ URL('sirkulasi_meninggal/insert') }}" type="button" class="btn btn-danger">Create Data</a>
                         </div>
                     </div>
 

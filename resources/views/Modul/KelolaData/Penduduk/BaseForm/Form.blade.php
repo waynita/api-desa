@@ -26,19 +26,35 @@
     <div class="col-sm-4">
         <div class="form-group">
             <label>Jenis Kelamin</label>
-            <input type="text" class="form-control" name="jenisKelamin" placeholder="Enter ...">
+            <select class="form-control" name="jenisKelamin" >
+                <option value="l" selected>Laki - Laki</option>
+                <option value="p">Perempuan</option>
+            </select>
         </div>
     </div>
     <div class="col-sm-4">
         <div class="form-group">
             <label>Agama</label>
-            <input type="text" class="form-control" name="agama" placeholder="Enter ...">
+            <select class="form-control" name="agama" >
+                <option value="Islam" selected>Islam</option>
+                <option value="Kristen Protestan">Kristen Protestan</option>
+                <option value="Kristen Katolik">Kristen Katolik</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Buddha">Buddha</option>
+                <option value="Konghucu">Konghucu</option>
+                <option value="Belum Terdefinisi">Tidak Terdefinisi</option>
+            </select>
         </div>
     </div>
     <div class="col-sm-4">
         <div class="form-group">
             <label>Status Perkawinan</label>
-            <input type="text" class="form-control" name="statusPerkawinan" placeholder="Enter ...">
+            <select class="form-control" name="statusPerkawinan" >
+                <option value="Belum Kawin" selected>Belum Kawin</option>
+                <option value="Kawin">Kawin</option>
+                <option value="Cerai Hidup">Cerai Hidup</option>
+                <option value="Cerai Mati">Cerai Mati</option>
+            </select>
         </div>
     </div>
     <div class="col-sm-4">
