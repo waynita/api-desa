@@ -68,7 +68,7 @@
                 },
                 success: function(d){
                     toastr.success("behasil masuk");
-                    window.location.href = "{{URL('/sirkulasi_data_lahir')}}";
+                    window.location.href = "{{URL('/sirkulasi_meninggal')}}";
                 },
                 error: function(e){
                     if (e.status == 401) {

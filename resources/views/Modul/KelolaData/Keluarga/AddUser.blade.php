@@ -49,7 +49,7 @@
                                         <td>{{$val->nik}}</td>
                                         <td>{{$val->relation}}</td>
                                         <td>
-
+                                            <button" onClick="deletesUser({{$val->user_id}})" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -117,7 +117,7 @@
                                             <?=$v->gender=='l'?'Laki - Laki':'Perempuan'?>
                                         </td>
                                         <td>
-
+                                            <button" onClick="deletesBorn({{$v->id}})" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -167,7 +167,6 @@
                                         </p>
                                         <p class="text-sm">Daerah <b class="d-block">{{ $Family->districts }}</b>
                                         </p>
-                                       
                                     </div>
                                 </div>
                             </div>
@@ -253,5 +252,71 @@
             });
         });
     });
+
+    function deletesUser(id) {   
+        var btn = $(".btn");            
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+            }
+        });
+        $.ajax({
+            url: '{{ URL("api/family/delete/user/")}}/' + id,
+            processData: false,
+            contentType: false,
+            cache: false,
+            dataType: 'json',
+            type: 'DELETE',
+            beforeSend: function(){
+                toastr.warning('Loadings...');
+            },
+            success: function(d){
+                toastr.success("behasil hapus");
+                location.reload();
+            },
+            error: function(e, xhr){
+                if (e.status == 401) {
+                    toastr.error(e.responseJSON.error.status);
+                    window.location.href = "{{URL('/')}}";
+                }
+                e.responseJSON.errors.forEach(function(item) {
+                    toastr.error(JSON.stringify(item));
+                });
+            }
+        });
+    }
+
+    function deletesBorn(id) {   
+        var btn = $(".btn");            
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+            }
+        });
+        $.ajax({
+            url: '{{ URL("api/born/delete/")}}/' + id,
+            processData: false,
+            contentType: false,
+            cache: false,
+            dataType: 'json',
+            type: 'DELETE',
+            beforeSend: function(){
+                toastr.warning('Loadings...');
+            },
+            success: function(d){
+                toastr.success("behasil hapus");
+                location.reload();
+            },
+            error: function(e, xhr){
+                if (e.status == 401) {
+                    toastr.error(e.responseJSON.error.status);
+                    window.location.href = "{{URL('/')}}";
+                }
+                e.responseJSON.errors.forEach(function(item) {
+                    toastr.error(JSON.stringify(item));
+                });
+            }
+        });
+    }
 </script>
 @endsection

@@ -94,5 +94,38 @@
             })
         }
     });
+
+    function deletes(id) {   
+        var btn = $(".btn");            
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+            }
+        });
+        $.ajax({
+            url: '{{ URL("api/user/delete/")}}/' + id,
+            processData: false,
+            contentType: false,
+            cache: false,
+            dataType: 'json',
+            type: 'DELETE',
+            beforeSend: function(){
+                toastr.warning('Loadings...');
+            },
+            success: function(d){
+                toastr.success("behasil hapus");
+                location.reload();
+            },
+            error: function(e, xhr){
+                if (e.status == 401) {
+                    toastr.error(e.responseJSON.error.status);
+                    window.location.href = "{{URL('/')}}";
+                }
+                e.responseJSON.errors.forEach(function(item) {
+                    toastr.error(JSON.stringify(item));
+                });
+            }
+        });
+    }
 </script>
 @endsection

@@ -96,4 +96,22 @@ class FamilyController extends Controller
         Json::set('data', config('callback.deleteSuccess'));
         return response()->json(Json::get(), 202);
     }
+    
+    public function DeleteUser()
+    {
+        $Model = $this->_Request->Payload->get('Model');
+
+        DB::beginTransaction();
+        try {
+            $Model->User->save();
+            $Model->Population->save();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
+        Json::set('data', config('callback.deleteSuccess'));
+        return response()->json(Json::get(), 202);
+    }
 }

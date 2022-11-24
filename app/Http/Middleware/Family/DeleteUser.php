@@ -1,35 +1,33 @@
 <?php
 
-namespace App\Http\Middleware\User;
+namespace App\Http\Middleware\Family;
 
 use App\Http\Middleware\BaseMiddleware;
 use App\Models\Family;
 use App\Models\Population;
 use App\Models\User;
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class Delete extends BaseMiddleware
+class DeleteUser extends BaseMiddleware
 {
     protected function initiate() 
     {
         $this->Model->User = User::where('id', $this->Id)->first();
-        $this->Model->Population = Population::where('user_id', $this->Id)->first();
+        if ($this->Model->User) {
+            $this->Model->User->family_id = null;
+            $this->Model->Population = Population::where('user_id', $this->Model->User->id)->first();
 
-        $this->Model->Family = Family::where('head_id', $this->Id)->first();
-        if ($this->Model->Family) {
-            $this->Model->UserChild = User::where('family_id', $this->Id)->get();
-            $this->Model->PopulationChild = Population::where('user_id', $this->Model->Family->head_id)->first();
-
-            if ($this->Model->PopulationChild) {
-                $this->Model->PopulationChild->relation = null;
+            if ($this->Model->Population) {
+                $this->Model->Population->relation = null;
             }
         }
     }
 
     protected function validation()
     {
-        $this->mergeRules([ 'id' => 'required' ]);
+        $this->mergeRules([ 'id' => 'required | exists:App\Models\User,id',  ]);
         $validator = Validator::make([ 'id' => $this->Id ], $this->Rules);
         if ($validator->fails()) {
             $this->Json::set('errors', $validator->errors()->jsonSerialize());
@@ -39,7 +37,7 @@ class Delete extends BaseMiddleware
             $this->Json::set('errors', config('callback.userNotFound'));
             return false;
         }
-       
+
         return true;
     }
 

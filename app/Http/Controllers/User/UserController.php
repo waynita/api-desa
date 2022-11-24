@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Support\Json;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -62,6 +63,14 @@ class UserController extends Controller
         try {
             $Model->User->delete();
             $Model->Population->delete();
+
+            if (isset($Model->Family)) {
+                $Model->Family->delete();
+                foreach ($Model->UserChild as $val) {
+                User::where('id', $val->id)->update(['family_id' => null]);
+                }
+                $Model->PopulationChild->save();
+            }
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
