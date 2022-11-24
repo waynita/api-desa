@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Family;
 
 use App\Http\Controllers\Controller;
 use App\Models\Family;
+use App\Models\User;
 use App\Traits\Datatables;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -128,5 +129,82 @@ class FamilyBrowseController extends Controller
         }
         $out['results'] = $res;        
         return $out;
+    }
+
+    public function Details($id)
+    {
+        $Id = $id;
+        $Family = Family::select(
+            // family
+            'family.id as id',
+            'family.number_family as number_family',
+            'family.head_id as head_id',
+            'family.village as village',
+            'family.sub_districts as sub_districts',
+            'family.districts as districts',
+            'family.province as province',
+            'family.neighbourhood as neighbourhood',
+            'family.hamlet as hamlet',
+
+            // user
+            'users.id as user_id',
+            'users.name as name'
+        )->join('users', 'users.family_id', 'family.id')
+        ->where('family.id', $id)->first();
+
+        $User = Family::select(
+            // family
+            'family.id as id',
+            'family.number_family as number_family',
+            'family.head_id as head_id',
+            'family.village as village',
+            'family.sub_districts as sub_districts',
+            'family.districts as districts',
+            'family.province as province',
+
+            // user
+            'users.id as user_id',
+            'users.name as name',
+            
+            // Population
+            "population.nik as nik",
+            "population.place_of_birth as place_of_birth",
+            "population.gender as gender",
+            "population.village as village",
+            "population.neighbourhood as neighbourhood",
+            "population.hamlet as hamlet",
+            "population.religion as religion",
+            "population.relation as relation",
+            "population.married as married",
+            "population.occupation as occupation",
+            "population.status as status",
+        )->leftjoin('users', 'users.family_id', 'family.id')
+        ->join('population', 'users.id', 'population.user_id')
+        ->where('users.family_id', $id)
+        ->get();
+        
+        $Born = Family::select(
+            // family
+            'family.number_family as number_family',
+            'family.head_id as head_id',
+            'family.village as village',
+            'family.sub_districts as sub_districts',
+            'family.districts as districts',
+            'family.province as province',
+
+            // Born
+            'born.id as id',
+            'born.name as name',
+            'born.gender as gender'
+        )->leftjoin('born', 'born.family_id', 'family.id')
+        ->where('born.family_id', $id)
+        ->get();
+
+        $Extra = [
+            'data_meninggal' => count(User::join('population', 'population.user_id', 'users.id')->where('users.family_id', $id)->where('population.status', 'meninggal')->get()->toArray())
+        ];
+
+        return view('Modul.KelolaData.Keluarga.AddUser')->with(compact('User', 'Born', 'Family', 'Extra', 'Id'));
+
     }
 }

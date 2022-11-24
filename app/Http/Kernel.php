@@ -27,7 +27,7 @@ use App\Http\Middleware\Comer\Update as ComerUpdate;
 use App\Http\Middleware\Dead\Insert as DeadInsert;
 use App\Http\Middleware\Dead\Update as DeadUpdate;
 use App\Http\Middleware\Dead\Delete as DeadDelete;
-
+use App\Http\Middleware\Family\Add;
 // Move
 use App\Http\Middleware\Move\Delete as MoveDelete;
 use App\Http\Middleware\Move\Insert as MoveInsert;
@@ -103,6 +103,7 @@ class Kernel extends HttpKernel
         'FamilyInsert' => FamilyInsert::class,
         'FamilyUpdate' => FamilyUpdate::class,
         'FamilyDelete' => FamilyDelete::class,
+        'FamilyAdd' => Add::class,
 
         // Born
         'BornInsert' => BornInsert::class,

@@ -86,3 +86,6 @@ Route::get("/surat_pengantar/insert", function() { return view("Modul.Surat.Peng
 
 Route::post("/getUser", [UserBrowseController::class, "getUser"])->name("getUser");
 Route::post("/getFamily", [FamilyBrowseController::class, "getFamily"])->name("getFamily");
+
+
+Route::get("/data_keluarga/detail/{id}", [FamilyBrowseController::class, "Details"]);

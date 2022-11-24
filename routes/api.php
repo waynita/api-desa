@@ -36,6 +36,7 @@ Route::delete("user/delete/{id}", [UserController::class,"Delete"])->middleware(
 
 Route::post("family/insert", [FamilyController::class,"Insert"])->middleware('FamilyInsert');
 Route::put("family/update/{id}", [FamilyController::class,"Update"])->middleware('FamilyUpdate');
+Route::put("family/add/{id}", [FamilyController::class,"Add"])->middleware('FamilyAdd');
 Route::delete("family/delete/{id}", [FamilyController::class,"Delete"])->middleware('FamilyDelete');
 
 Route::post("born/insert", [BornController::class,"Insert"])->middleware('BornInsert');

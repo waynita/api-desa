@@ -59,6 +59,23 @@ class FamilyController extends Controller
         return response()->json(Json::get(), 202);
     }
 
+    public function Add()
+    {
+        $Model = $this->_Request->Payload->get('Model');
+        DB::beginTransaction();
+        try {
+            $Model->User->save();
+            $Model->Population->save();           
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
+        Json::set('data', config('callback.updateSuccess'));
+        return response()->json(Json::get(), 202);
+    }
+
     public function Delete()
     {
         $Model = $this->_Request->Payload->get('Model');
