@@ -37,6 +37,7 @@
                                         <th>Nama</th>
                                         <th>NIK</th>
                                         <th>Hubungan</th>
+                                        <th>Status</th>
                                         <th style="width: 40px">Action</th>
 
                                     </tr>
@@ -48,6 +49,8 @@
                                         <td>{{$val->name}}</td>
                                         <td>{{$val->nik}}</td>
                                         <td>{{$val->relation}}</td>
+                                        <td>{{$val->status}}</td>
+
                                         <td>
                                             @if ($Family->head_id != $val->user_id)
                                             <button" onClick="deletesUser({{$val->user_id}})" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i></button>
