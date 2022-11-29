@@ -37,8 +37,8 @@ class Insert extends BaseMiddleware
         $this->mergeRules([
             'number_family' => ['required','string', 'min:1', 'max:20', 'unique:App\Models\Family,number_family'],
             'village' => ['required', 'string', 'min:1', 'max:150'],
-            'neighbourhood' => ['required', 'integer'],
-            'hamlet' => ['required', 'integer'],
+            'neighbourhood' => ['required', 'string'],
+            'hamlet' => ['required', 'string'],
             'sub_districts' => ['required', 'string', 'min:1', 'max:150'],
             'districts' => ['required', 'string', 'min:1', 'max:150'],
             'province' => ['required', 'string', 'min:1', 'max:150'],

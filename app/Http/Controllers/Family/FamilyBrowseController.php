@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Family;
 use App\Http\Controllers\Controller;
 use App\Models\Family;
 use App\Models\User;
+use App\Support\Json;
 use App\Traits\Datatables;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -206,5 +207,15 @@ class FamilyBrowseController extends Controller
 
         return view('Modul.KelolaData.Keluarga.AddUser')->with(compact('User', 'Born', 'Family', 'Extra', 'Id'));
 
+    }
+
+    public function Update($id)
+    {
+        $Data = getFamilyHelper($id, 'user');
+        if (!$Data) {
+            Json::set('error', 'Data tidak ditemukan');
+            return response()->json(Json::get(), 400);
+        }
+        return view("Modul.KelolaData.Keluarga.Update")->with(compact("Data"));
     }
 }

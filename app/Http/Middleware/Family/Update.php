@@ -39,8 +39,8 @@ class Update extends BaseMiddleware
         $this->mergeRules([
             'number_family' => ['string', 'min:1', 'max:20', 'unique:App\Models\Family,number_family,' . $this->Id . ',id'],
             'village' => ['string', 'min:1', 'max:150'],
-            'neighbourhood' => ['integer'],
-            'hamlet' => ['integer'],
+            'neighbourhood' => ['string'],
+            'hamlet' => ['string'],
             'sub_districts' => ['string', 'min:1', 'max:150'],
             'districts' => ['string', 'min:1', 'max:150'],
             'province' => ['string', 'min:1', 'max:150'],

@@ -17,8 +17,8 @@ class FamilySeeder extends Seeder
                 'number_family' => '119988877',
                 'head_id' => 3,
                 'village' => "Bekasi Timur",
-                'neighbourhood' => 1,
-                'hamlet' => 2,
+                'neighbourhood' => "1",
+                'hamlet' => "2",
                 'sub_districts' => "Bekasi Barat",
                 'districts' => "Bekasi",
                 'province' => "Bekasi"

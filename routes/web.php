@@ -89,3 +89,9 @@ Route::post("/getFamily", [FamilyBrowseController::class, "getFamily"])->name("g
 
 
 Route::get("/data_keluarga/detail/{id}", [FamilyBrowseController::class, "Details"]);
+
+
+// Update
+Route::get("/data_penduduk/update/{id}", [UserBrowseController::class, "Update"]);
+Route::get("/data_keluarga/update/{id}", [FamilyBrowseController::class, "Update"]);
+// end Update

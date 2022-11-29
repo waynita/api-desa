@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('number_family', 20);
             $table->integer('head_id')->index('head_id', 'idx_head_id');
             $table->string('village', 191);
-            $table->integer('neighbourhood');
-            $table->integer('hamlet');
+            $table->string('neighbourhood');
+            $table->string('hamlet');
             $table->string('sub_districts', 191);
             $table->string('districts', 191);
             $table->string('province', 191);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Support\Json;
 use App\Traits\Datatables;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -171,5 +172,15 @@ class UserBrowseController extends Controller
         }
         $out['results'] = $res;        
         return $out;
+    }
+
+    public function Update($id)
+    {
+        $Data = getUserHelper($id, 'user');
+        if (!$Data) {
+            Json::set('error', 'Data tidak ditemukan');
+            return response()->json(Json::get(), 400);
+        }
+        return view("Modul.KelolaData.Penduduk.Update")->with(compact("Data"));
     }
 }

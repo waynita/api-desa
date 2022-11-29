@@ -30,6 +30,7 @@ class Insert extends BaseMiddleware
         $this->Model->Population->hamlet = $this->_Request->input('rw');
         $this->Model->Population->religion = $this->_Request->input('agama');
         $this->Model->Population->married = $this->_Request->input('statusPerkawinan');
+        $this->Model->Population->district = $this->_Request->input('kecamatan');
         $this->Model->Population->occupation = $this->_Request->input('pekerjaan');
     }
 
@@ -48,12 +49,13 @@ class Insert extends BaseMiddleware
     {
         $this->mergeRules([
             'nama' => ['required','string', 'min:1', 'max:150'],
+            'kecamatan' => ['required', 'string', 'min:1', 'max:150'],
             'nik' => ['required', 'string', 'min:1', 'max:20', 'unique:App\Models\Population,nik'],
             'tempatLahir' => ['required', 'min:1', 'max:150'],
             'jenisKelamin' => ['required', 'in:l,p'],
             'desa' => ['required', 'string', 'min:1', 'max:150'],
-            'rt' => ['required', 'integer'],
-            'rw' => ['required', 'integer'],
+            'rt' => ['required', 'string'],
+            'rw' => ['required', 'string'],
             'alamat' => ['string', 'min:1', 'max:191'],
             'agama' => ['required', 'string', 'min:1', 'max:150'],
             'statusPerkawinan' => ['required', 'string', 'min:1', 'max:150'],

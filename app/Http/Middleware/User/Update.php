@@ -29,6 +29,7 @@ class Update extends BaseMiddleware
                 $this->Model->Population->hamlet = $this->_Request->input('rw');
                 $this->Model->Population->religion = $this->_Request->input('agama');
                 $this->Model->Population->married = $this->_Request->input('statusPerkawinan');
+                $this->Model->Population->district = $this->_Request->input('kecamatan');
                 $this->Model->Population->occupation = $this->_Request->input('pekerjaan');
             }
         }
@@ -44,13 +45,14 @@ class Update extends BaseMiddleware
 
         $this->mergeRules([
             'nama' => ['string', 'min:1', 'max:150'],
+            'kecamatan' => ['string', 'min:1', 'max:150'],
             'nik' => ['string', 'min:1', 'max:20', 'unique:App\Models\Population,nik,' . $this->Model->Population->id . 'id'],
             'tempatLahir' => ['min:1', 'max:150'],
             'jenisKelamin' => ['in:l,p'],
             'desa' => [ 'string', 'min:1', 'max:150'],
-            'rt' => ['integer'],
-            'rw' => ['integer'],
-            'alamat' => ['string', 'min:1', 'max:191'],
+            'rt' => ['string'],
+            'rw' => ['string'],
+            'alamat' => ['string', 'min:1'],
             'agama' => ['string', 'min:1', 'max:150'],
             'statusPerkawinan' => ['string', 'min:1', 'max:150'],
             'pekerjaan' => ['string', 'min:1', 'max:150']
