@@ -126,7 +126,7 @@
             </ul>
           </li>
 
-          <li class="nav-item dashboard">
+          <!-- <li class="nav-item dashboard">
             <a href="#" class="nav-link dashboard">
               <i class="nav-icon fas fa-envelope"></i>
               <p>
@@ -173,7 +173,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
 
           <li class="nav-item dashboard">
             <a href="#" class="nav-link dashboard">
@@ -186,37 +186,37 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ URL('') }}" class="nav-link dashboard">
+                <a href="{{ URL('laporan_penduduk') }}" class="nav-link dashboard">
                   <i class="fas fa-envelope nav-icon"></i>
                   <p>Data Penduduk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ URL('') }}" class="nav-link dashboard">
+                <a href="{{ URL('laporan_keluarga') }}" class="nav-link dashboard">
                   <i class="fas fa-envelope nav-icon"></i>
                   <p>Data Keluarga</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ URL('') }}" class="nav-link dashboard">
+                <a href="{{ URL('laporan_lahir') }}" class="nav-link dashboard">
                   <i class="fas fa-envelope nav-icon"></i>
                   <p>Data Lahir</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ URL('') }}" class="nav-link dashboard">
+                <a href="{{ URL('laporan_meninggal') }}" class="nav-link dashboard">
                   <i class="fas fa-envelope nav-icon"></i>
                   <p>Data Meninggal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ URL('') }}" class="nav-link dashboard">
+                <a href="{{ URL('laporan_pendatang') }}" class="nav-link dashboard">
                   <i class="fas fa-envelope nav-icon"></i>
                   <p>Data Pendatang</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ URL('') }}" class="nav-link dashboard">
+                <a href="{{ URL('laporan_pindah') }}" class="nav-link dashboard">
                   <i class="fas fa-envelope nav-icon"></i>
                   <p>Data Pindah</p>
                 </a>

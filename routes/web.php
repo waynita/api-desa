@@ -8,6 +8,7 @@ use App\Http\Controllers\Dead\DeadBrowseController;
 use App\Http\Controllers\Family\FamilyBrowseController;
 use App\Http\Controllers\Move\MoveBrowseController;
 use App\Http\Controllers\Position\PositionBrowseController;
+use App\Http\Controllers\Report\ReportController;
 use App\Http\Controllers\User\UserBrowseController;
 use App\Http\Controllers\User\UserController;
 
@@ -95,3 +96,8 @@ Route::get("/data_keluarga/detail/{id}", [FamilyBrowseController::class, "Detail
 Route::get("/data_penduduk/update/{id}", [UserBrowseController::class, "Update"]);
 Route::get("/data_keluarga/update/{id}", [FamilyBrowseController::class, "Update"]);
 // end Update
+
+
+// Download
+Route::post("download", [ReportController::class, "anything"])->name("download");
+// Download
