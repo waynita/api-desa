@@ -77,9 +77,9 @@ class PendudukReportController extends Controller
         $sheet->setCellValue($this->StartColumnHeader . $this->StartRowTitle, $this->Title);
 
         $sheet->mergeCells($this->StartColumnHeader . $this->StartRowSubTitle . ":" . $this->EndColumnHeader . $this->StartRowSubTitle)->getRowDimension('1')->setRowHeight(35);
-        $sheet->getStyle($this->StartColumnHeader . $this->StartRowSubTitle, $this->SubTitle . " " . $From . " - " . $End)->getFont()->setSize(13);
+        $sheet->getStyle($this->StartColumnHeader . $this->StartRowSubTitle, $this->SubTitle)->getFont()->setSize(13);
         $sheet->getStyle($this->StartColumnHeader . $this->StartRowSubTitle)->getAlignment()->setHorizontal('center')->setVertical('center');
-        $sheet->setCellValue($this->StartColumnHeader . $this->StartRowSubTitle, $this->SubTitle);
+        $sheet->setCellValue($this->StartColumnHeader . $this->StartRowSubTitle, $this->SubTitle . " " . $From . " - " . $End);
 
         foreach(range($this->StartColumnHeader , $this->EndColumnHeader) as $columnID) {
             $sheet->getColumnDimension($columnID)->setAutoSize(true);
