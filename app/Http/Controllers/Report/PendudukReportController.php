@@ -92,7 +92,7 @@ class PendudukReportController extends Controller
         $Number = 1;
         $Data = Population::select("population.*", "users.name as name", "users.birthdate as birthdate", "family.number_family as number_family")
             ->join('users', 'users.id', 'population.user_id')
-            ->join('family', 'users.family_id', 'family.id')
+            ->leftJoin('family', 'users.family_id', 'family.id')
             ->whereBetween('population.created_at', [$From, $End])->get(); 
 
         if (isset($Data)) {
