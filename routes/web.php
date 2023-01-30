@@ -99,5 +99,5 @@ Route::get("/data_keluarga/update/{id}", [FamilyBrowseController::class, "Update
 
 
 // Download
-Route::post("download", [ReportController::class, "anything"])->name("download");
+Route::post("download/{uuid}", [ReportController::class, "anything"])->name("download");
 // Download

@@ -2,13 +2,13 @@
     <div class="col-sm-6">
         <div class="form-group">
             <label>Dari Tanggal</label>
-            <input type="date" class="form-control" name="districts" placeholder="Desa">
+            <input type="date" class="form-control" name="from" placeholder="Dari Tanggal">
         </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
             <label>Sampai Tanggal</label>
-            <input type="date" class="form-control" name="sub_districts" placeholder="Kecamatan">
+            <input type="date" class="form-control" name="end" placeholder="Sampai Tanggal">
         </div>
     </div>
     <div class="col-sm-12">

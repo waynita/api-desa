@@ -55,7 +55,7 @@
                 }
             });
             $.ajax({
-                url: '{{route("download")}}',
+                url: '{{URL("download/penduduk")}}',
                 data: formdata,
                 processData: false,
                 contentType: false,
@@ -66,8 +66,7 @@
                     toastr.warning('Loadings...');
                 },
                 success: function(d){
-                    toastr.success("behasil masuk");
-                    window.location.href = "{{URL('/data_penduduk')}}";
+                    document.location=d;
                 },
                 error: function(e){
                     if (e.status == 401) {
