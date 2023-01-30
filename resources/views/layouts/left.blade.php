@@ -57,7 +57,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"> 
           <li class="nav-item dashboard">
             <a href="/" class="nav-link dashboard">
-              <i class="nav-icon fas fa-envelope"></i>
+              <i class="nav-icon fas fa-home"></i>
               <p>
                 Dashboard
               </p>
@@ -66,7 +66,7 @@
         
           <li class="nav-item dashboard">
             <a href="#" class="nav-link dashboard">
-              <i class="nav-icon fas fa-envelope"></i>
+              <i class="nav-icon fas fa-file"></i>
               <p>
               Kelola Data
                 <i class="right fas fa-angle-left"></i>
@@ -76,13 +76,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ URL('data_penduduk') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-user nav-icon"></i>
                   <p>Data Penduduk</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ URL('data_keluarga') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-users nav-icon"></i>
                   <p>Data Keluarga</p>
                 </a>
               </li>
@@ -91,7 +91,7 @@
 
           <li class="nav-item dashboard">
             <a href="#" class="nav-link dashboard">
-              <i class="nav-icon fas fa-envelope"></i>
+              <i class="nav-icon fas fa-sync"></i>
               <p>
               Sirkulasi Penduduk
                 <i class="right fas fa-angle-left"></i>
@@ -101,25 +101,25 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ URL('sirkulasi_data_lahir') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-baby nav-icon"></i>
                   <p>Data Kelahiran</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ URL('sirkulasi_meninggal') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-user-alt-slash nav-icon"></i>
                   <p>Data Meninggal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ URL('sirkulasi_pendatang') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-user-plus nav-icon"></i>
                   <p>Data Pendatang</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ URL('sirkulasi_pindah') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-people-carry nav-icon"></i>
                   <p>Data Pindah</p>
                 </a>
               </li>
@@ -177,7 +177,7 @@
 
           <li class="nav-item dashboard">
             <a href="#" class="nav-link dashboard">
-              <i class="nav-icon fas fa-envelope"></i>
+              <i class="nav-icon fas fa-folder-open"></i>
               <p>
               Laporan
                 <i class="right fas fa-angle-left"></i>
@@ -187,37 +187,37 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ URL('laporan_penduduk') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-file nav-icon"></i>
                   <p>Data Penduduk</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ URL('laporan_keluarga') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-file-alt nav-icon"></i>
                   <p>Data Keluarga</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ URL('laporan_lahir') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-file-medical-alt nav-icon"></i>
                   <p>Data Lahir</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ URL('laporan_meninggal') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-file-medical nav-icon"></i>
                   <p>Data Meninggal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ URL('laporan_pendatang') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-copy nav-icon"></i>
                   <p>Data Pendatang</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ URL('laporan_pindah') }}" class="nav-link dashboard">
-                  <i class="fas fa-envelope nav-icon"></i>
+                  <i class="fas fa-file-signature nav-icon"></i>
                   <p>Data Pindah</p>
                 </a>
               </li>
