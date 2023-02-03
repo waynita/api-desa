@@ -65,7 +65,7 @@ class ComerBrowseController extends Controller
             $nik = $record->nik;
             $name = $record->name;
             $gender = ($record->gender == 'l') ? 'Laki - Laki' : 'Perempuan';
-            $date_of_come = $record->date_of_come;
+            $date_of_come = Carbon::parse($record->date_of_come)->format('Y-m-d');
             $pelapor = $record->pelapor;
             $action = '<a type="button" onClick="deletes('. $id .')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>';
             

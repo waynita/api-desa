@@ -18,6 +18,14 @@ class ReportController extends Controller
         if ($Uuid == 'dead') { 
             $Url = (new DeadReportController)->Anything($request);
         }
+        if ($Uuid == 'comer') { 
+            $Url = (new ComerReportController)->Anything($request);
+        }
+        if ($Uuid == 'move') { 
+            $Url = (new MoveReportController)->Anything($request);
+        }
+
+
 
         return response()->json($Url, 200);
     }
