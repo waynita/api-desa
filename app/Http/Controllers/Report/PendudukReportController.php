@@ -128,7 +128,7 @@ class PendudukReportController extends Controller
             }
         }
         $writer = new Xlsx($spreadsheet);
-        $FileName = 'report/' . Carbon::now() . '.xlsx';
+        $FileName = 'report/kependudukan-' . Carbon::now() . '.xlsx';
         $writer->save($FileName);
         return $FileName;
     }
