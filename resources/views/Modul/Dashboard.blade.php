@@ -22,15 +22,7 @@
 	<div class="container-fluid">
         <div class="row">
             <div class="col-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Grafik Transaksi</h3>    
-                    </div>
-                    <div class="card-body">
-                        
-                    </div>
-                </div>
-                
+                <h1>Selamat Datang</h1>
             </div>
         </div>
     </div>

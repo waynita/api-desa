@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('email', 191)->unique();
             $table->string('password', 400);
             $table->string('avatar_id', 191)->nullable()->default(null);
-            $table->enum('gender', ['male', 'female'])->nullable()->default(null);
+            $table->enum('gender', ['l', 'p'])->nullable()->default(null);
             $table->date('birthdate')->nullable()->default(null);
             $table->integer('position_id')->default(1);
             $table->enum('status', ['active', 'inactive'])->default('active');

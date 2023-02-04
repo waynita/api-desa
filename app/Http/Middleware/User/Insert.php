@@ -18,6 +18,7 @@ class Insert extends BaseMiddleware
         $this->Model->User->email = $this->generateRandomString() . "@mail.com";
         $this->Model->User->password = md5($this->generateRandomString());
         $this->Model->User->birthdate = $this->_Request->input('tanggalLahir');
+        $this->Model->User->gender = $this->_Request->input('jenisKelamin');
         $this->Model->User->position_id = 4;
 
         $this->Model->Population = new Population();
