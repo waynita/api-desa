@@ -112,7 +112,7 @@ class MoveReportController extends Controller
             foreach ($Data as $Value) {
                 $sheet->setCellValue('A'.$this->StartRowValue, $Number++);
                 $sheet->setCellValue('B'.$this->StartRowValue, $Value->name);
-                $sheet->setCellValue('C'.$this->StartRowValue, $Value->nik);
+                $sheet->setCellValue('C'.$this->StartRowValue, "'".$Value->nik);
                 $sheet->setCellValue('D'.$this->StartRowValue, Carbon::parse($Value->date_of_move)->format('Y-m-d'));
                 $sheet->setCellValue('E'.$this->StartRowValue, $Value->reason);
                 $sheet->setCellValue('F'.$this->StartRowValue, $Value->created_at);

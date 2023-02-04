@@ -107,7 +107,7 @@ class DeadReportController extends Controller
             foreach ($Data as $Value) {
                 $sheet->setCellValue('A'.$this->StartRowValue, $Number++);
                 $sheet->setCellValue('B'.$this->StartRowValue, $Value->name);
-                $sheet->setCellValue('C'.$this->StartRowValue, $Value->nik);
+                $sheet->setCellValue('C'.$this->StartRowValue, "'".$Value->nik);
                 $sheet->setCellValue('D'.$this->StartRowValue, ($Value->gender == 'l') ? "Laki-Laki" : "Wanita");
                 $sheet->setCellValue('E'.$this->StartRowValue, Carbon::parse($Value->date_of_death)->format('Y-m-d'));
                 $sheet->setCellValue('F'.$this->StartRowValue, $Value->cause_of_death);

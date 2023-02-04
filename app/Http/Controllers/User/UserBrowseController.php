@@ -112,7 +112,7 @@ class UserBrowseController extends Controller
             $occupation = $record->occupation;
             $number_family = '<a href="'. URL('data_keluarga/detail/'. $record['family_id']) .'" >'. $record->number_family. '</a>';
             $married = $record->married;
-            $action = '<a href="' . URL('data_penduduk/detail/'. $id) . '" type="button" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a> <a href="' . URL('data_penduduk/update/'. $id) . '" type="button" class="btn btn-warning btn-sm"><i class="fa fa-pen"></i></a> <a type="button" onClick="deletes('. $id .')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>';
+            $action = '<a href="' . URL('data_penduduk/update/'. $id) . '" type="button" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a> <a type="button" onClick="deletes('. $id .')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>';
             
             $data_arr[] = array(
                 'id' => $id,

@@ -22,7 +22,7 @@ class PendudukReportController extends Controller
     protected $StartRowHeader = 3;
     protected $EndRowHeader = 4;
     protected $StartColumnHeader = 'A';
-    protected $EndColumnHeader = 'M';
+    protected $EndColumnHeader = 'L';
 
     protected $StartRowValue = 5;
 
@@ -34,7 +34,6 @@ class PendudukReportController extends Controller
         $sheet = $spreadsheet->getActiveSheet();
         $this->Data = [
             "NO",
-            "ID",
             "NAMA",
             "NIK",
             "TEMPAT / TANGGAL LAHIR",
@@ -98,18 +97,17 @@ class PendudukReportController extends Controller
         if (isset($Data)) {
             foreach ($Data as $Value) {
                 $sheet->setCellValue('A'.$this->StartRowValue, $Number++);
-                $sheet->setCellValue('B'.$this->StartRowValue, $Value->id);
-                $sheet->setCellValue('C'.$this->StartRowValue, $Value->name);
-                $sheet->setCellValue('D'.$this->StartRowValue, $Value->nik);
-                $sheet->setCellValue('E'.$this->StartRowValue, $Value->place_of_birth . ", ". $Value->birthdate);
-                $sheet->setCellValue('F'.$this->StartRowValue, ($Value->gender == 'l') ? "Laki-Laki" : "Wanita");
-                $sheet->setCellValue('G'.$this->StartRowValue, $Value->address);
-                $sheet->setCellValue('H'.$this->StartRowValue, $Value->married);
-                $sheet->setCellValue('I'.$this->StartRowValue, $Value->occupation);
-                $sheet->setCellValue('J'.$this->StartRowValue, $Value->number_family);
-                $sheet->setCellValue('K'.$this->StartRowValue, $Value->religion);
-                $sheet->setCellValue('L'.$this->StartRowValue, $Value->status);
-                $sheet->setCellValue('M'.$this->StartRowValue, $Value->created_at);
+                $sheet->setCellValue('B'.$this->StartRowValue, $Value->name);
+                $sheet->setCellValue('C'.$this->StartRowValue, "'".$Value->nik);
+                $sheet->setCellValue('D'.$this->StartRowValue, $Value->place_of_birth . ", ". $Value->birthdate);
+                $sheet->setCellValue('E'.$this->StartRowValue, ($Value->gender == 'l') ? "Laki-Laki" : "Wanita");
+                $sheet->setCellValue('F'.$this->StartRowValue, $Value->address);
+                $sheet->setCellValue('G'.$this->StartRowValue, $Value->married);
+                $sheet->setCellValue('H'.$this->StartRowValue, $Value->occupation);
+                $sheet->setCellValue('I'.$this->StartRowValue, $Value->number_family);
+                $sheet->setCellValue('J'.$this->StartRowValue, $Value->religion);
+                $sheet->setCellValue('K'.$this->StartRowValue, $Value->status);
+                $sheet->setCellValue('L'.$this->StartRowValue, $Value->created_at);
 
                 $sheet->getStyle('A'.$this->StartRowValue.':A'.$this->StartRowValue)->applyFromArray($styleCenter)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
          	    $sheet->getStyle('B'.$this->StartRowValue.':B'.$this->StartRowValue)->applyFromArray($styleCenter)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
@@ -123,7 +121,6 @@ class PendudukReportController extends Controller
          	    $sheet->getStyle('J'.$this->StartRowValue.':J'.$this->StartRowValue)->applyFromArray($styleCenter)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
          	    $sheet->getStyle('K'.$this->StartRowValue.':K'.$this->StartRowValue)->applyFromArray($styleCenter)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
                 $sheet->getStyle('L'.$this->StartRowValue.':L'.$this->StartRowValue)->applyFromArray($styleCenter)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
-                $sheet->getStyle('M'.$this->StartRowValue.':M'.$this->StartRowValue)->applyFromArray($styleCenter)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
                 $this->StartRowValue++;
             }
         }

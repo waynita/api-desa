@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
@@ -21,7 +22,9 @@ class FamilySeeder extends Seeder
                 'hamlet' => "2",
                 'sub_districts' => "Bekasi Barat",
                 'districts' => "Bekasi",
-                'province' => "Bekasi"
+                'province' => "Bekasi",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
         ])->keyBy($this->key);
     }

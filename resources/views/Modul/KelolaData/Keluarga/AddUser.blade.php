@@ -166,7 +166,6 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    
                                     <div class="text-muted">
                                         <p class="text-sm">RT / RW <b class="d-block"> {{ $Family->neighbourhood }} / {{ $Family->hamlet }}</b>
                                         </p>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Position\PositionBrowseController;
 use App\Http\Controllers\Report\ReportController;
 use App\Http\Controllers\User\UserBrowseController;
 use App\Http\Controllers\User\UserController;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,12 +52,42 @@ Route::get("/surat_kematian", function() { return view("Modul.Surat.Kematian"); 
 Route::get("/surat_pendatang", function() { return view("Modul.Surat.Pendatang"); });
 Route::get("/surat_pindah", function() { return view("Modul.Surat.Pindah"); });
 
-Route::get("/laporan_penduduk", function() { return view("Modul.Laporan.Penduduk"); });
-Route::get("/laporan_keluarga", function() { return view("Modul.Laporan.Keluarga"); });
-Route::get("/laporan_lahir", function() { return view("Modul.Laporan.Kelahiran"); });
-Route::get("/laporan_meninggal", function() { return view("Modul.Laporan.Meninggal"); });
-Route::get("/laporan_pendatang", function() { return view("Modul.Laporan.Pendatang"); });
-Route::get("/laporan_pindah", function() { return view("Modul.Laporan.Pindah"); });
+Route::get("/laporan_penduduk", function() { 
+    $From = Carbon::now()->toDateString();
+    $End = Carbon::now()->endOfMonth()->toDateString(); 
+    return view("Modul.Laporan.Penduduk")->with(compact('From', 'End')); 
+});
+
+Route::get("/laporan_keluarga", function() { 
+    $From = Carbon::now()->toDateString();
+    $End = Carbon::now()->endOfMonth()->toDateString(); 
+    return view("Modul.Laporan.Keluarga")->with(compact('From', 'End')); 
+});
+
+Route::get("/laporan_lahir", function() { 
+    $From = Carbon::now()->toDateString();
+    $End = Carbon::now()->endOfMonth()->toDateString(); 
+    return view("Modul.Laporan.Kelahiran")->with(compact('From', 'End')); 
+});
+
+Route::get("/laporan_meninggal", function() { 
+    $From = Carbon::now()->toDateString();
+    $End = Carbon::now()->endOfMonth()->toDateString(); 
+    return view("Modul.Laporan.Meninggal")->with(compact('From', 'End')); 
+});
+
+Route::get("/laporan_pendatang", function() { 
+    $From = Carbon::now()->toDateString();
+    $End = Carbon::now()->endOfMonth()->toDateString(); 
+    return view("Modul.Laporan.Pendatang")->with(compact('From', 'End')); 
+});
+
+Route::get("/laporan_pindah", function() { 
+    $From = Carbon::now()->toDateString();
+    $End = Carbon::now()->endOfMonth()->toDateString(); 
+    return view("Modul.Laporan.Pindah")->with(compact('From', 'End')); 
+});
+
 Route::get("/surat_pengantar", function() { return view("Modul.Surat.Pengantar"); });
 // end Data
 

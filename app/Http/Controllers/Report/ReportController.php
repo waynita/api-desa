@@ -24,9 +24,9 @@ class ReportController extends Controller
         if ($Uuid == 'move') { 
             $Url = (new MoveReportController)->Anything($request);
         }
-
-
-
+        if ($Uuid == 'family') { 
+            $Url = (new FamilyReportController)->Anything($request);
+        }
         return response()->json($Url, 200);
     }
 }

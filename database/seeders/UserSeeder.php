@@ -23,7 +23,8 @@ class UserSeeder extends Seeder
                 'show' => 0,
                 'email' => 'root@main.com',
                 'password' => Hash::make('Password123'),
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Admin',
@@ -33,7 +34,8 @@ class UserSeeder extends Seeder
                 'show' => 0,
                 'email' => 'admin@main.com',
                 'password' => Hash::make('Password123'),
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'User Pertama',
@@ -43,7 +45,8 @@ class UserSeeder extends Seeder
                 'show' => 1,
                 'email' => 'user1@main.com',
                 'password' => Hash::make('Password123'),
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'User Kedua',
@@ -53,7 +56,8 @@ class UserSeeder extends Seeder
                 'show' => 1,
                 'email' => 'user2@main.com',
                 'password' => Hash::make('Password123'),
-                'created_at' => Carbon::now()
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]
         ])->keyBy($this->key);
     }

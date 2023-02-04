@@ -26,6 +26,7 @@ class PopulationSeeder extends Seeder
                 'religion' => 'Islam',
                 'address' => 'Jalan Semangka',
                 'married' => 'tidak',
+                'relation' => 'Kepala Keluarga',
                 'occupation' => 'Saudagar',
                 'status' => 'ada',
                 'created_at' => Carbon::now()
@@ -42,6 +43,7 @@ class PopulationSeeder extends Seeder
                 'religion' => 'Islam',
                 'address' => 'Jalan Semangka',
                 'married' => 'tidak',
+                'relation' => 'istri',
                 'occupation' => 'Pedagang',
                 'status' => 'ada',
                 'created_at' => Carbon::now()

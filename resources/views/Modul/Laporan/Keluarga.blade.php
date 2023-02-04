@@ -28,8 +28,8 @@
                     </div>
 
                     <div class="card-body">
-                    <form class="form-family">
-                        
+                    <form class="form-download-keluarga">
+                        @include("Modul.Laporan.BaseForm.Form")
                     </form>
                     </div>
                 </div>
@@ -41,5 +41,42 @@
 @endsection 
 
 @section('script')
-
+<script>
+    $(document).ready(function() {
+        $(".form-download-keluarga").submit(function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            var btn = $(".btn");
+            var formdata = new FormData(this);
+            
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+                }
+            });
+            $.ajax({
+                url: '{{URL("download/family")}}',
+                data: formdata,
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: 'json',
+                type: 'POST',
+                beforeSend: function(){
+                    toastr.warning('Loadings...');
+                },
+                success: function(d){
+                    document.location=d;
+                },
+                error: function(e){
+                    if (e.status == 401) {
+                        toastr.error(e.responseJSON.error.status);
+                        window.location.href = "{{URL('/')}}";
+                    }
+                    toastr.error(JSON.stringify(e.responseJSON.errors));
+                }
+            });
+        });
+    })
+</script>
 @endsection
