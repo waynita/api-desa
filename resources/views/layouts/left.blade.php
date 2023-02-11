@@ -19,14 +19,17 @@
             <img src="{{asset('dist/img/cat.jpeg')}}" class="img-circle elevation-2" alt="User Image">
 
             <p>
-               Keluarkan Session
+               Hello, {{ session('username') }}
+            </p>
+            <p>
+              Born, {{ DateFormat(session('created_at')) }}
             </p>
           </li>
           
           <!-- Menu Footer-->
           <li class="user-footer">
             <a href="#" class="btn btn-default btn-flat">Profile</a>
-            <a href="" class="btn btn-default btn-flat float-right">Sign out</a>
+            <a href="{{ URL('logout') }}" class="btn btn-default btn-flat float-right">Sign out</a>
           </li>
         </ul>
       </li>
@@ -47,7 +50,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="{{URL('/')}}" class="d-block"> Tampilkan kode </a>
+          <a href="{{URL('/')}}" class="d-block"> Hello, {{ session('username') }} </a>
         </div>
       </div>
       

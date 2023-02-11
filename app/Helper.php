@@ -2,6 +2,7 @@
 
 use App\Models\Family;
 use App\Models\User;
+use Carbon\Carbon;
 
 if ( ! function_exists('getUserHelper'))
 {
@@ -94,5 +95,13 @@ if ( ! function_exists('getFamilyHelper'))
 
         $Data = $Data->first();
         return $Data;
+    }
+}
+
+if ( ! function_exists('DateFormat'))
+{
+    function DateFormat($Date)
+    {
+        return Carbon::parse($Date);
     }
 }

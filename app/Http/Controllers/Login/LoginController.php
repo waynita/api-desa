@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Login;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -18,5 +20,11 @@ class LoginController extends Controller
         $Data = User::where('username', $request->username)->first()->toArray();
         session($Data);
         return response()->json(['success']);
+    }
+
+    public function Logout()
+    {
+        \Session::flush();
+        return Redirect::to('login');
     }
 }

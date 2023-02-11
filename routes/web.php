@@ -33,6 +33,8 @@ Route::get('login', function () {
 Route::post('login', [LoginController::class, 'Anything']);
 
 Route::middleware('auth')->group(function () {
+    Route::get('logout', [LoginController::class, 'Logout']);
+
     Route::post("get_born", [BornBrowseController::class,"Anything"])->name('GetBorn');
     Route::post("get_comer", [ComerBrowseController::class,"Anything"])->name('GetComer');
     Route::post("get_dead", [DeadBrowseController::class,"Anything"])->name('GetDead');
@@ -122,7 +124,7 @@ Route::middleware('auth')->group(function () {
     Route::get("/laporan_pindah/insert", function() { return view("Modul.Laporan.Pindah.Insert"); });
     Route::get("/surat_pengantar/insert", function() { return view("Modul.Surat.Pengantar.Insert"); });
     // end Insert
-    
+
     Route::post("/getUser", [UserBrowseController::class, "getUser"])->name("getUser");
     Route::post("/getFamily", [FamilyBrowseController::class, "getFamily"])->name("getFamily");
 
