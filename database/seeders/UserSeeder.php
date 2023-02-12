@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'position_id' => 1,
                 'show' => 0,
                 'email' => 'root@main.com',
-                'password' => Hash::make('Password123'),
+                'password' => Hash::make(env('LOGIN_ACCOUNT')),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
                 'position_id' => 2,
                 'show' => 0,
                 'email' => 'admin@main.com',
-                'password' => Hash::make('Password123'),
+                'password' => Hash::make(env('LOGIN_ACCOUNT')),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
                 'position_id' => 4,
                 'show' => 1,
                 'email' => 'user1@main.com',
-                'password' => Hash::make('Password123'),
+                'password' => Hash::make(env('LOGIN_ACCOUNT')),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -55,7 +55,7 @@ class UserSeeder extends Seeder
                 'position_id' => 4,
                 'show' => 1,
                 'email' => 'user2@main.com',
-                'password' => Hash::make('Password123'),
+                'password' => Hash::make(env('LOGIN_ACCOUNT')),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]
